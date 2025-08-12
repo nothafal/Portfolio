@@ -6,35 +6,32 @@
   <title>Alyssa Chanyanut Nothaft — Portfolio</title>
   <meta name="description" content="Information design & creative design portfolio of Alyssa Chanyanut Nothaft." />
 
-  <!-- Load Roboto Regular for body text -->
+  <!-- Roboto for body text -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
 
-  <!-- Preload Tusker Grotesk 5800 Super for big name -->
-  <link rel="preload" href="TuskerGrotesk-5800Super.woff2?v=9" as="font" type="font/woff2" crossorigin>
+  <!-- Tusker Super for big name -->
+  <link rel="preload" href="TuskerGrotesk-5800Super.woff2?v=10" as="font" type="font/woff2" crossorigin>
 
-  <!-- Stylesheet with cache-busting -->
-  <link rel="stylesheet" href="styles.css?v=9">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=10">
 </head>
 <body id="top">
 
   <!-- Header -->
   <header class="site-header">
     <div class="container header-grid">
-      <!-- Left: Home wordmark -->
       <a class="homewordmark" href="#top" aria-label="Home">
         <span>Alyssa</span>
         <span>Chanyanut</span>
         <span>Nothaft</span>
       </a>
 
-      <!-- Center: Nav -->
       <nav class="nav-links" aria-label="Primary">
         <a href="#about">About me</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#contact">Contact me</a>
       </nav>
 
-      <!-- Right empty column keeps nav visually centered -->
       <div aria-hidden="true"></div>
     </div>
   </header>
@@ -42,8 +39,6 @@
   <!-- Hero -->
   <main class="hero">
     <div class="container hero-grid">
-
-      <!-- Left: description + portrait -->
       <div>
         <p class="desc">
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
@@ -57,7 +52,6 @@
           alt="Portrait of Alyssa Chanyanut Nothaft" />
       </div>
 
-      <!-- Right: big outlined name + disciplines -->
       <div>
         <h1 class="name-outline">
           <span>Alyssa</span>
@@ -73,18 +67,9 @@
     </div>
   </main>
 
-  <!-- Placeholder sections -->
-  <section id="about" class="section container">
-    <h2 class="visually-hidden">About</h2>
-  </section>
-
-  <section id="portfolio" class="section container">
-    <h2 class="visually-hidden">Portfolio</h2>
-  </section>
-
-  <section id="contact" class="section container">
-    <h2 class="visually-hidden">Contact</h2>
-  </section>
+  <section id="about" class="section container"></section>
+  <section id="portfolio" class="section container"></section>
+  <section id="contact" class="section container"></section>
 
 </body>
 </html>
