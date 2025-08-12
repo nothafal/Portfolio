@@ -6,14 +6,14 @@
   <title>Alyssa Chanyanut Nothaft — Portfolio</title>
   <meta name="description" content="Information design & creative design portfolio of Alyssa Chanyanut Nothaft." />
 
-  <!-- Roboto for body text -->
+  <!-- Body font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
 
-  <!-- Tusker Super for big name -->
-  <link rel="preload" href="TuskerGrotesk-5800Super.woff2?v=10" as="font" type="font/woff2" crossorigin>
+  <!-- Preload big-name font -->
+  <link rel="preload" href="TuskerGrotesk-5800Super.woff2?v=11" as="font" type="font/woff2" crossorigin>
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=10">
+  <!-- Stylesheet (cache-busted) -->
+  <link rel="stylesheet" href="styles.css?v=11">
 </head>
 <body id="top">
 
@@ -25,34 +25,26 @@
         <span>Chanyanut</span>
         <span>Nothaft</span>
       </a>
-
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#about">About me</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact me</a>
-      </nav>
-
-      <div aria-hidden="true"></div>
+      <a class="header-link" href="#about">About me</a>
+      <a class="header-link" href="#portfolio">Portfolio</a>
+      <a class="header-link" href="#contact">Contact me</a>
     </div>
   </header>
 
   <!-- Hero -->
   <main class="hero">
     <div class="container hero-grid">
-      <div>
+      <div class="hero-left">
         <p class="desc">
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
           Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
           Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
         </p>
 
-        <img
-          class="hero-photo"
-          src="./Example_Me.png"
-          alt="Portrait of Alyssa Chanyanut Nothaft" />
+        <img class="hero-photo" src="./Example_Me.png" alt="Portrait of Alyssa Chanyanut Nothaft" />
       </div>
 
-      <div>
+      <div class="hero-right">
         <h1 class="name-outline">
           <span>Alyssa</span>
           <span>Chanyanut</span>
