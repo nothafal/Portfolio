@@ -1,34 +1,40 @@
-/* ---------------- Tusker Grotesk (uses files in your repo root) ---------------- */
-@font-face{ font-family:"Tusker Grotesk"; src:url("./TuskerGrotesk-1500Medium.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:swap; }
-@font-face{ font-family:"Tusker Grotesk"; src:url("./TuskerGrotesk-1700Bold.woff2")   format("woff2"); font-weight:700; font-style:normal; font-display:swap; }
-@font-face{ font-family:"Tusker Grotesk"; src:url("./TuskerGrotesk-1800Super.woff2")  format("woff2"); font-weight:800; font-style:normal; font-display:swap; }
+/* ---------------- Tusker Grotesk (actual files in your repo root) ---------------- */
+@font-face{
+  font-family:"Tusker Grotesk";
+  src:url("./TuskerGrotesk-5700Bold.woff2") format("woff2");
+  font-weight:700; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Tusker Grotesk";
+  src:url("./TuskerGrotesk-5800Super.woff2") format("woff2");
+  font-weight:800; font-style:normal; font-display:swap;
+}
 
 /* ---------------- Tokens ---------------- */
 :root{
   --black:#000; --white:#fff;
 
   --font-display:"Tusker Grotesk", Impact, "Arial Black", "Helvetica Neue", Arial, sans-serif;
-  --font-body: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body:"Roboto","Helvetica Neue",Arial,sans-serif;
 
   --fs-nav:20px;
   --fs-body:20px;
-  --fs-name:160px;                 /* big outlined name */
+  --fs-name:160px;
   --fs-discipline:30px;
 
-  --lh-tight:1.11539;              /* 111.539% */
+  --lh-tight:1.11539;
   --ls-nav:.8px;
   --ls-name:6.4px;
   --ls-discipline:1.2px;
 
-  --stroke-heavy:5px;              /* header/desc outline */
-  --stroke-name:4px;               /* big name outline */
+  --stroke-heavy:5px;
+  --stroke-name:4px;
 
   --container-max:1280px;
   --gap-1:12px; --gap-2:20px; --gap-3:32px; --gap-4:48px; --gap-5:64px;
 
-  /* controls the underlap position of the photo */
-  --photo-shift-x: 56px;           /* push right into the name column */
-  --photo-rise-y: -120px;          /* pull up under the name lines (negative = up) */
+  --photo-shift-x:56px;
+  --photo-rise-y:-120px;
 }
 
 /* ---------------- Base ---------------- */
@@ -49,30 +55,31 @@ a{color:inherit; text-decoration:none}
 .site-header{padding-block:24px}
 .header-grid{
   display:grid; align-items:center;
-  grid-template-columns:200px 1fr 200px;   /* wordmark | centered nav | spacer */
+  grid-template-columns:200px 1fr 200px;
 }
 
-/* OUTLINED TEXT helper (applied to multiple selectors) */
-.outline{
+/* Outlined text helper */
+.outlined{
   color:transparent; -webkit-text-fill-color:transparent;
-  -webkit-text-stroke: var(--stroke-heavy) var(--black);
-  /* Firefox-ish fallback */
-  text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
+  -webkit-text-stroke:var(--stroke-heavy) var(--black);
+  text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000;
 }
 
+/* Home wordmark & nav use Tusker Bold */
 .homewordmark{
   width:105px; height:64px; flex-shrink:0;
-  font:700 20px/var(--lh-tight) var(--font-display);
+  font:700 var(--fs-nav)/var(--lh-tight) "Tusker Grotesk";
   letter-spacing:.8px; text-transform:uppercase;
+  color:transparent; -webkit-text-fill-color:transparent;
+  -webkit-text-stroke:var(--stroke-heavy) var(--black);
+  text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000;
 }
 .homewordmark span{display:block}
-.homewordmark{ composes: outline; } /* (ignored by browsers, just a comment hint) */
-.homewordmark{ color:transparent; -webkit-text-fill-color:transparent; -webkit-text-stroke:var(--stroke-heavy) var(--black); text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000; }
 
 .nav-links{display:flex; justify-content:center; gap:48px}
 .nav-links a{
   height:20px; flex-shrink:0;
-  font:500 var(--fs-nav)/var(--lh-tight) var(--font-display);
+  font:700 var(--fs-nav)/var(--lh-tight) "Tusker Grotesk";
   letter-spacing:var(--ls-nav); text-transform:uppercase;
   color:transparent; -webkit-text-fill-color:transparent;
   -webkit-text-stroke:var(--stroke-heavy) var(--black);
@@ -84,43 +91,40 @@ a{color:inherit; text-decoration:none}
 .hero{padding-block:var(--gap-5)}
 .hero-grid{
   display:grid; gap:var(--gap-4); align-items:start;
-  grid-template-columns:480px 1fr;         /* left = desc + photo, right = name */
+  grid-template-columns:480px 1fr;
 }
 
-/* left column */
+/* Body description uses Roboto Regular */
 .desc{
   width:351px; margin:0 0 var(--gap-3) 0;
   font:400 20px/1.09 var(--font-body);
-  color:transparent; -webkit-text-fill-color:transparent;
-  -webkit-text-stroke:var(--stroke-heavy) var(--black);
-  text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000;
+  color:#000; -webkit-text-fill-color:initial;
+  -webkit-text-stroke:0; text-shadow:none;
 }
 
 .hero-photo{
-  width:514px; aspect-ratio:9/16;          /* exact size from Figma */
+  width:514px; aspect-ratio:9/16;
   object-fit:cover; object-position:center;
-
-  /* make it run UNDER the big name */
   position:relative; z-index:1;
   transform: translate(var(--photo-shift-x), var(--photo-rise-y));
 }
 
-/* right column */
+/* Big name uses Tusker Super */
 .name-outline{
   max-width:927px; margin:0 0 var(--gap-3) 0;
-  font:800 var(--fs-name)/var(--lh-tight) var(--font-display);
+  font:800 var(--fs-name)/var(--lh-tight) "Tusker Grotesk";
   letter-spacing:var(--ls-name); text-transform:uppercase;
-
-  position:relative; z-index:2;            /* above the photo */
+  position:relative; z-index:2;
   color:transparent; -webkit-text-fill-color:transparent;
   -webkit-text-stroke:var(--stroke-name) var(--black);
   text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000;
 }
 .name-outline span{display:block}
 
+/* Discipline text uses Tusker Bold */
 .discipline{
   width:min(583px,100%); margin:0;
-  font:700 var(--fs-discipline)/var(--lh-tight) var(--font-display);
+  font:700 var(--fs-discipline)/var(--lh-tight) "Tusker Grotesk";
   letter-spacing:var(--ls-discipline); text-transform:uppercase; color:#000;
 }
 
