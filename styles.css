@@ -1,19 +1,7 @@
-/* ---------------- Tusker Grotesk (use the files you uploaded in repo root) ---------------- */
-@font-face{
-  font-family:"Tusker Grotesk";
-  src:url("./TuskerGrotesk-1500Medium.woff2") format("woff2");
-  font-weight:500; font-style:normal; font-display:swap;
-}
-@font-face{
-  font-family:"Tusker Grotesk";
-  src:url("./TuskerGrotesk-1700Bold.woff2") format("woff2");
-  font-weight:700; font-style:normal; font-display:swap;
-}
-@font-face{
-  font-family:"Tusker Grotesk";
-  src:url("./TuskerGrotesk-1800Super.woff2") format("woff2");
-  font-weight:800; font-style:normal; font-display:swap;
-}
+/* ---------------- Tusker Grotesk (uses files in your repo root) ---------------- */
+@font-face{ font-family:"Tusker Grotesk"; src:url("./TuskerGrotesk-1500Medium.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:swap; }
+@font-face{ font-family:"Tusker Grotesk"; src:url("./TuskerGrotesk-1700Bold.woff2")   format("woff2"); font-weight:700; font-style:normal; font-display:swap; }
+@font-face{ font-family:"Tusker Grotesk"; src:url("./TuskerGrotesk-1800Super.woff2")  format("woff2"); font-weight:800; font-style:normal; font-display:swap; }
 
 /* ---------------- Tokens ---------------- */
 :root{
@@ -24,21 +12,23 @@
 
   --fs-nav:20px;
   --fs-body:20px;
-  --fs-name:160px;           /* big outlined name */
+  --fs-name:160px;                 /* big outlined name */
   --fs-discipline:30px;
 
-  --lh-tight:1.11539;        /* 111.539% */
+  --lh-tight:1.11539;              /* 111.539% */
   --ls-nav:.8px;
   --ls-name:6.4px;
   --ls-discipline:1.2px;
 
-  --stroke-heavy:5px;        /* header/desc outline */
-  --stroke-name:4px;         /* big name outline */
+  --stroke-heavy:5px;              /* header/desc outline */
+  --stroke-name:4px;               /* big name outline */
 
   --container-max:1280px;
   --gap-1:12px; --gap-2:20px; --gap-3:32px; --gap-4:48px; --gap-5:64px;
 
-  --photo-shift:40px;        /* nudge photo right so it sits under the name */
+  /* controls the underlap position of the photo */
+  --photo-shift-x: 56px;           /* push right into the name column */
+  --photo-rise-y: -120px;          /* pull up under the name lines (negative = up) */
 }
 
 /* ---------------- Base ---------------- */
@@ -62,27 +52,31 @@ a{color:inherit; text-decoration:none}
   grid-template-columns:200px 1fr 200px;   /* wordmark | centered nav | spacer */
 }
 
+/* OUTLINED TEXT helper (applied to multiple selectors) */
+.outline{
+  color:transparent; -webkit-text-fill-color:transparent;
+  -webkit-text-stroke: var(--stroke-heavy) var(--black);
+  /* Firefox-ish fallback */
+  text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
+}
+
 .homewordmark{
   width:105px; height:64px; flex-shrink:0;
   font:700 20px/var(--lh-tight) var(--font-display);
   letter-spacing:.8px; text-transform:uppercase;
-
-  color:transparent; -webkit-text-fill-color:transparent;
-  -webkit-text-stroke: var(--stroke-heavy) var(--black);
-  /* Firefox fallback outline */
-  text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
 }
 .homewordmark span{display:block}
+.homewordmark{ composes: outline; } /* (ignored by browsers, just a comment hint) */
+.homewordmark{ color:transparent; -webkit-text-fill-color:transparent; -webkit-text-stroke:var(--stroke-heavy) var(--black); text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000; }
 
 .nav-links{display:flex; justify-content:center; gap:48px}
 .nav-links a{
   height:20px; flex-shrink:0;
   font:500 var(--fs-nav)/var(--lh-tight) var(--font-display);
   letter-spacing:var(--ls-nav); text-transform:uppercase;
-
   color:transparent; -webkit-text-fill-color:transparent;
-  -webkit-text-stroke: var(--stroke-heavy) var(--black);
-  text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
+  -webkit-text-stroke:var(--stroke-heavy) var(--black);
+  text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000;
 }
 .nav-links a:hover{opacity:.85}
 
@@ -90,24 +84,25 @@ a{color:inherit; text-decoration:none}
 .hero{padding-block:var(--gap-5)}
 .hero-grid{
   display:grid; gap:var(--gap-4); align-items:start;
-  grid-template-columns:480px 1fr;         /* left column = desc + photo, right = name */
+  grid-template-columns:480px 1fr;         /* left = desc + photo, right = name */
 }
 
 /* left column */
 .desc{
   width:351px; margin:0 0 var(--gap-3) 0;
   font:400 20px/1.09 var(--font-body);
-
   color:transparent; -webkit-text-fill-color:transparent;
-  -webkit-text-stroke: var(--stroke-heavy) var(--black);
-  text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
+  -webkit-text-stroke:var(--stroke-heavy) var(--black);
+  text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000;
 }
+
 .hero-photo{
   width:514px; aspect-ratio:9/16;          /* exact size from Figma */
   object-fit:cover; object-position:center;
 
-  position:relative; z-index:1;            /* go under the big name */
-  transform: translateX(var(--photo-shift));
+  /* make it run UNDER the big name */
+  position:relative; z-index:1;
+  transform: translate(var(--photo-shift-x), var(--photo-rise-y));
 }
 
 /* right column */
@@ -116,10 +111,10 @@ a{color:inherit; text-decoration:none}
   font:800 var(--fs-name)/var(--lh-tight) var(--font-display);
   letter-spacing:var(--ls-name); text-transform:uppercase;
 
-  position:relative; z-index:2;            /* sit above the photo */
+  position:relative; z-index:2;            /* above the photo */
   color:transparent; -webkit-text-fill-color:transparent;
-  -webkit-text-stroke: var(--stroke-name) var(--black);
-  text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
+  -webkit-text-stroke:var(--stroke-name) var(--black);
+  text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000;
 }
 .name-outline span{display:block}
 
@@ -131,12 +126,20 @@ a{color:inherit; text-decoration:none}
 
 /* ---------------- Responsive ---------------- */
 @media (max-width:1100px){
-  :root{--fs-name:clamp(72px,10vw,140px); --stroke-name:3px; --stroke-heavy:3px; --photo-shift:16px}
+  :root{
+    --fs-name:clamp(72px,10vw,140px);
+    --stroke-name:3px; --stroke-heavy:3px;
+    --photo-shift-x:16px; --photo-rise-y:-40px;
+  }
   .hero-grid{grid-template-columns:1fr}
   .hero-photo{width:min(420px,90vw)}
 }
 @media (max-width:600px){
-  :root{--fs-nav:16px; --fs-discipline:22px; --stroke-name:2px; --stroke-heavy:2px; --photo-shift:0px}
+  :root{
+    --fs-nav:16px; --fs-discipline:22px;
+    --stroke-name:2px; --stroke-heavy:2px;
+    --photo-shift-x:0px; --photo-rise-y:0px;
+  }
   .header-grid{grid-template-columns:1fr}
   .nav-links{justify-content:flex-start; gap:24px; margin-top:12px}
 }
