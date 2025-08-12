@@ -1,4 +1,4 @@
-/* ---------------- Tusker Grotesk (actual files in your repo root) ---------------- */
+/* Tusker fonts */
 @font-face{
   font-family:"Tusker Grotesk";
   src:url("./TuskerGrotesk-5700Bold.woff2") format("woff2");
@@ -10,12 +10,11 @@
   font-weight:800; font-style:normal; font-display:swap;
 }
 
-/* ---------------- Tokens ---------------- */
+/* Tokens */
 :root{
   --black:#000; --white:#fff;
-
-  --font-display:"Tusker Grotesk", Impact, "Arial Black", "Helvetica Neue", Arial, sans-serif;
-  --font-body:"Roboto","Helvetica Neue",Arial,sans-serif;
+  --font-display:"Tusker Grotesk", sans-serif;
+  --font-body:"Roboto", sans-serif;
 
   --fs-nav:20px;
   --fs-body:20px;
@@ -23,97 +22,75 @@
   --fs-discipline:30px;
 
   --lh-tight:1.11539;
-  --ls-nav:.8px;
-  --ls-name:6.4px;
-  --ls-discipline:1.2px;
+  --ls-all:0.04em; /* 4% letter spacing */
 
   --stroke-heavy:5px;
   --stroke-name:4px;
 
   --container-max:1280px;
-  --gap-1:12px; --gap-2:20px; --gap-3:32px; --gap-4:48px; --gap-5:64px;
+  --gap-3:32px; --gap-4:48px;
 
   --photo-shift-x:56px;
   --photo-rise-y:-120px;
 }
 
-/* ---------------- Base ---------------- */
+/* Base */
 *{box-sizing:border-box}
 html,body{margin:0}
 body{
   background:var(--white); color:var(--black);
   font:var(--fs-body)/var(--lh-tight) var(--font-body);
-  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
 img{max-width:100%; height:auto; display:block}
-a{color:inherit; text-decoration:none}
 .container{max-width:var(--container-max); margin-inline:auto; padding-inline:24px}
-.section{padding-block:var(--gap-5)}
-.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-/* ---------------- Header ---------------- */
+/* Header */
 .site-header{padding-block:24px}
 .header-grid{
   display:grid; align-items:center;
   grid-template-columns:200px 1fr 200px;
 }
 
-/* Outlined text helper */
-.outlined{
-  color:transparent; -webkit-text-fill-color:transparent;
-  -webkit-text-stroke:var(--stroke-heavy) var(--black);
-  text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000;
-}
-
-/* Home wordmark & nav use Tusker Bold */
+/* Logo & nav = Tusker Bold, solid */
 .homewordmark{
-  width:105px; height:64px; flex-shrink:0;
-  font:700 var(--fs-nav)/var(--lh-tight) "Tusker Grotesk";
-  letter-spacing:.8px; text-transform:uppercase;
-  color:transparent; -webkit-text-fill-color:transparent;
-  -webkit-text-stroke:var(--stroke-heavy) var(--black);
-  text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000;
+  width:105px; font:700 var(--fs-nav)/var(--lh-tight) var(--font-display);
+  letter-spacing:var(--ls-all); text-transform:uppercase;
+  color:var(--black);
 }
 .homewordmark span{display:block}
 
 .nav-links{display:flex; justify-content:center; gap:48px}
 .nav-links a{
-  height:20px; flex-shrink:0;
-  font:700 var(--fs-nav)/var(--lh-tight) "Tusker Grotesk";
-  letter-spacing:var(--ls-nav); text-transform:uppercase;
-  color:transparent; -webkit-text-fill-color:transparent;
-  -webkit-text-stroke:var(--stroke-heavy) var(--black);
-  text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000;
+  font:700 var(--fs-nav)/var(--lh-tight) var(--font-display);
+  letter-spacing:var(--ls-all); color:var(--black);
 }
 .nav-links a:hover{opacity:.85}
 
-/* ---------------- Hero ---------------- */
-.hero{padding-block:var(--gap-5)}
+/* Hero */
+.hero{padding-block:var(--gap-4)}
 .hero-grid{
   display:grid; gap:var(--gap-4); align-items:start;
   grid-template-columns:480px 1fr;
 }
 
-/* Body description uses Roboto Regular */
+/* Body text = Roboto Regular */
 .desc{
-  width:351px; margin:0 0 var(--gap-3) 0;
-  font:400 20px/1.09 var(--font-body);
-  color:#000; -webkit-text-fill-color:initial;
-  -webkit-text-stroke:0; text-shadow:none;
+  width:351px; font:400 20px/1.09 var(--font-body);
+  color:var(--black);
 }
 
+/* Photo cropped and underlap only with big name */
 .hero-photo{
-  width:514px; aspect-ratio:9/16;
-  object-fit:cover; object-position:center;
+  width:514px; aspect-ratio:9/16; object-fit:cover;
   position:relative; z-index:1;
-  transform: translate(var(--photo-shift-x), var(--photo-rise-y));
+  transform:translate(var(--photo-shift-x), var(--photo-rise-y));
 }
 
-/* Big name uses Tusker Super */
+/* Big name outlined */
 .name-outline{
-  max-width:927px; margin:0 0 var(--gap-3) 0;
-  font:800 var(--fs-name)/var(--lh-tight) "Tusker Grotesk";
-  letter-spacing:var(--ls-name); text-transform:uppercase;
+  max-width:927px;
+  font:800 var(--fs-name)/var(--lh-tight) var(--font-display);
+  letter-spacing:var(--ls-all); text-transform:uppercase;
   position:relative; z-index:2;
   color:transparent; -webkit-text-fill-color:transparent;
   -webkit-text-stroke:var(--stroke-name) var(--black);
@@ -121,14 +98,15 @@ a{color:inherit; text-decoration:none}
 }
 .name-outline span{display:block}
 
-/* Discipline text uses Tusker Bold */
+/* Discipline = Tusker Bold, solid black */
 .discipline{
-  width:min(583px,100%); margin:0;
-  font:700 var(--fs-discipline)/var(--lh-tight) "Tusker Grotesk";
-  letter-spacing:var(--ls-discipline); text-transform:uppercase; color:#000;
+  width:min(583px,100%);
+  font:700 var(--fs-discipline)/var(--lh-tight) var(--font-display);
+  letter-spacing:var(--ls-all); color:var(--black);
+  position:relative; z-index:3; /* ensure on top of image */
 }
 
-/* ---------------- Responsive ---------------- */
+/* Responsive */
 @media (max-width:1100px){
   :root{
     --fs-name:clamp(72px,10vw,140px);
