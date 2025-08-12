@@ -1,32 +1,40 @@
-/* ------------ Tusker Grotesk (your files in repo root) ------------ */
-@font-face{ font-family:"Tusker Grotesk"; src:url("./TuskerGrotesk-5700Bold.woff2")  format("woff2"); font-weight:700; font-style:normal; font-display:swap; }
-@font-face{ font-family:"Tusker Grotesk"; src:url("./TuskerGrotesk-5800Super.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:swap; }
+/* ------------ Tusker Grotesk (files in your repo root) ------------ */
+@font-face{
+  font-family:"Tusker Grotesk";
+  src:url("./TuskerGrotesk-5700Bold.woff2") format("woff2");
+  font-weight:700; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Tusker Grotesk";
+  src:url("./TuskerGrotesk-5800Super.woff2") format("woff2");
+  font-weight:800; font-style:normal; font-display:swap;
+}
 
 /* ------------ Tokens ------------ */
 :root{
   --black:#000; --white:#fff;
 
   --font-display:"Tusker Grotesk", sans-serif;
-  --font-body:"Roboto", "Helvetica Neue", Arial, sans-serif;
+  --font-body:"Roboto","Helvetica Neue",Arial,sans-serif;
 
   --fs-nav:20px;
   --fs-body:20px;
   --fs-name:160px;
   --fs-discipline:30px;
 
-  --lh-tight:1.11539;
-  --ls-4pct:0.04em;      /* 4% tracking for most Tusker text */
-  --ls-logo:0.15em;      /* ~3px at 20px for the logo */
-  --ls-name:6.4px;
+  --lh-tight:1.11539;           /* 111.539% */
+  --ls-4pct:0.04em;             /* ~4% tracking */
+  --ls-logo:0.15em;             /* ~3px @ 20px for the logo */
+  --ls-name:6.4px;              /* big name tracking from Figma */
 
-  --stroke-name:3px;     /* lighter outline */
+  --stroke-name:3px;            /* thinner outline for big name */
 
   --container-max:1360px;
   --gap-3:32px; --gap-4:48px; --gap-5:64px;
 
-  /* photo underlap relative to left column; X=0 aligns with paragraph */
-  --photo-shift-x:0px;
-  --photo-rise-y:-140px;
+  /* underlap tuning (photo under big name) */
+  --photo-shift-x:0px;          /* keep left aligned with paragraph */
+  --photo-rise-y:-140px;        /* negative = move up under the name */
 }
 
 /* ------------ Base ------------ */
@@ -46,23 +54,26 @@ a{color:inherit; text-decoration:none}
 .site-header{padding-block:24px}
 .header-grid{
   display:grid; align-items:center;
-  grid-template-columns:repeat(4, 1fr);  /* 4 equal columns across the width */
-  column-gap:0;
+  grid-template-columns:repeat(4, 1fr);  /* logo | about | portfolio | contact */
 }
 .header-grid > *{justify-self:center}
-.homewordmark{justify-self:start}        /* keep logo hugging the left edge */
+.homewordmark{justify-self:start}        /* keep logo on the far left */
 
-/* Logo = Tusker Bold, solid, no stroke, ~3px tracking */
+/* Logo = Tusker Bold, solid black, ~3px tracking */
 .homewordmark{
   font:700 var(--fs-nav)/var(--lh-tight) "Tusker Grotesk";
-  letter-spacing:var(--ls-logo); text-transform:uppercase; color:var(--black);
+  letter-spacing:var(--ls-logo);
+  text-transform:uppercase;
+  color:var(--black);
 }
 .homewordmark span{display:block}
 
-/* Header links = Tusker Bold, solid, 4% tracking */
+/* Header links = Tusker Bold, solid black, 4% tracking */
 .header-link{
   font:700 var(--fs-nav)/var(--lh-tight) "Tusker Grotesk";
-  letter-spacing:var(--ls-4pct); text-transform:uppercase; color:var(--black);
+  letter-spacing:var(--ls-4pct);
+  text-transform:uppercase;
+  color:var(--black);
 }
 .header-link:hover{opacity:.85}
 
@@ -70,45 +81,55 @@ a{color:inherit; text-decoration:none}
 .hero{padding-block:var(--gap-5)}
 .hero-grid{
   display:grid; gap:var(--gap-4); align-items:start;
-  grid-template-columns:560px 1fr;      /* enough room for 514px photo under the text */
+  grid-template-columns:560px 1fr;      /* wider left so the 514px photo fits cleanly */
 }
 
-/* Left column: body text + photo, left aligned */
-.hero-left{display:block}
+/* Left column: body text + photo, left aligned together */
 .desc{
   width:351px; margin:0 0 var(--gap-3) 0;
-  font:400 20px/1.09 var(--font-body); color:#000;
+  font:400 20px/1.09 var(--font-body);
+  color:#000;                      /* filled body text */
 }
 
-/* Photo: exact crop, sits under big name only (not under discipline) */
+/* Photo: fixed 514x914 crop and underlap only with the big name */
 .hero-photo{
-  width:514px; aspect-ratio:9/16; object-fit:cover; object-position:center;
-  position:relative; z-index:1;
+  width:514px;
+  height:914px;                    /* forces 9:16 crop regardless of source */
+  object-fit:cover;
+  object-position:center;
+
+  position:relative; z-index:1;    /* below the outlined name */
   transform:translate(var(--photo-shift-x), var(--photo-rise-y));
 }
 
-/* Right column: big outlined name + discipline */
+/* Big name: Tusker Super, outline-only, never filled */
 .name-outline{
-  max-width:927px; margin:0 0 var(--gap-3) 0;
+  max-width:927px;
+  margin:0 0 40px 0;               /* extra space above discipline text */
   font:800 var(--fs-name)/var(--lh-tight) "Tusker Grotesk";
-  letter-spacing:var(--ls-name); text-transform:uppercase;
+  letter-spacing:var(--ls-name);
+  text-transform:uppercase;
 
-  position:relative; z-index:2;        /* above photo */
-  /* Outline only (no fill) */
+  position:relative; z-index:2;    /* above the photo */
+
+  /* FORCE transparent fill on all browsers */
   color:transparent !important;
-  -webkit-text-fill-color:transparent;
+  background:none !important;
+  -webkit-text-fill-color:transparent !important;
   -webkit-text-stroke:var(--stroke-name) var(--black);
-  /* Firefox fallback outline */
+  /* Firefox-ish fallback outline */
   text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000;
 }
 .name-outline span{display:block}
 
-/* Discipline: Tusker Bold, solid black, in front of the image */
+/* Discipline = Tusker Bold, solid black, not behind the photo */
 .discipline{
   width:min(583px,100%); margin:0;
   font:700 var(--fs-discipline)/var(--lh-tight) "Tusker Grotesk";
-  letter-spacing:var(--ls-4pct); text-transform:uppercase; color:#000;
-  position:relative; z-index:3;       /* ensure it never hides behind the photo */
+  letter-spacing:var(--ls-4pct);
+  text-transform:uppercase;
+  color:#000;
+  position:relative; z-index:3;    /* always above the image */
 }
 
 /* ------------ Responsive ------------ */
@@ -119,7 +140,7 @@ a{color:inherit; text-decoration:none}
     --photo-shift-x:0px; --photo-rise-y:-60px;
   }
   .hero-grid{grid-template-columns:1fr}
-  .hero-photo{width:min(420px,90vw)}
+  .hero-photo{width:min(420px,90vw); height:auto; aspect-ratio:9/16}
 }
 @media (max-width:600px){
   :root{
