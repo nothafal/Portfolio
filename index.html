@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alyssa Chanyanut Nothaft — Portfolio</title>
+  <meta name="description" content="Information design & creative design portfolio of Alyssa Chanyanut Nothaft." />
+  <link rel="preload" href="assets/fonts/TuskerGrotesk.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-grid">
+      <!-- Left: Home wordmark -->
+      <a class="homewordmark" href="#top" aria-label="Home">
+        <span>Alyssa</span>
+        <span>Chanyanut</span>
+        <span>Nothaft</span>
+      </a>
+
+      <!-- Center: Nav -->
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About me</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact me</a>
+      </nav>
+
+      <!-- Right empty column keeps nav visually centered -->
+      <div aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="top" class="hero">
+    <div class="container hero-grid">
+
+      <!-- Left: description + portrait -->
+      <div>
+        <p class="desc">
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+          Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+          Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+        </p>
+
+        <img
+          class="hero-photo"
+          src="assets/images/Example_Me.jpg"
+          alt="Portrait of Alyssa Chanyanut Nothaft standing by the sea" />
+      </div>
+
+      <!-- Right: big outlined name + disciplines -->
+      <div>
+        <h1 class="name-outline">
+          <span>Alyssa</span>
+          <span>Chanyanut</span>
+          <span>Nothaft</span>
+        </h1>
+
+        <p class="discipline">
+          Information design<br>
+          Creative design
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Placeholder sections so nav links work (fill later) -->
+  <section id="about" class="section container">
+    <h2 class="visually-hidden">About</h2>
+    <!-- your content -->
+  </section>
+
+  <section id="portfolio" class="section container">
+    <h2 class="visually-hidden">Portfolio</h2>
+    <!-- your projects -->
+  </section>
+
+  <section id="contact" class="section container">
+    <h2 class="visually-hidden">Contact</h2>
+    <!-- contact form or links -->
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
