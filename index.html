@@ -5,10 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Alyssa Chanyanut Nothaft — Portfolio</title>
   <meta name="description" content="Information design & creative design portfolio of Alyssa Chanyanut Nothaft." />
-  <link rel="preload" href="TuskerGrotesk-1800Super.woff2?v=5" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=5">
+
+  <!-- Load Roboto Regular for body text -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Preload Tusker Grotesk 5800 Super for big name -->
+  <link rel="preload" href="TuskerGrotesk-5800Super.woff2?v=9" as="font" type="font/woff2" crossorigin>
+
+  <!-- Stylesheet with cache-busting -->
+  <link rel="stylesheet" href="styles.css?v=9">
 </head>
-<body>
+<body id="top">
 
   <!-- Header -->
   <header class="site-header">
@@ -33,7 +40,7 @@
   </header>
 
   <!-- Hero -->
-  <main id="top" class="hero">
+  <main class="hero">
     <div class="container hero-grid">
 
       <!-- Left: description + portrait -->
@@ -45,9 +52,9 @@
         </p>
 
         <img
-  class="hero-photo"
-  src="./Example_Me.png"
-  alt="Portrait of Alyssa Chanyanut Nothaft" />
+          class="hero-photo"
+          src="./Example_Me.png"
+          alt="Portrait of Alyssa Chanyanut Nothaft" />
       </div>
 
       <!-- Right: big outlined name + disciplines -->
@@ -66,28 +73,18 @@
     </div>
   </main>
 
-  <!-- Placeholder sections so nav links work (fill later) -->
+  <!-- Placeholder sections -->
   <section id="about" class="section container">
     <h2 class="visually-hidden">About</h2>
-    <!-- your content -->
   </section>
 
   <section id="portfolio" class="section container">
     <h2 class="visually-hidden">Portfolio</h2>
-    <!-- your projects -->
   </section>
 
   <section id="contact" class="section container">
     <h2 class="visually-hidden">Contact</h2>
-    <!-- contact form or links -->
   </section>
 
-  <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
