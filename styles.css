@@ -33,47 +33,31 @@
   --ls-logo-adjusted:calc(var(--ls-logo) - 0.02em);
   --ls-name:6.4px;
 
-  /* Outline thickness for the big name */
-  --stroke-name:3.5px;
+  --stroke-name:3.5px;          /* outline thickness for big name */
+  --stroke-nav:1.5px;           /* active nav outline */
 
   --container-max:1360px;
   --gap-3:32px; --gap-4:48px; --gap-5:64px;
 
-  /* ---------- Position controls ----------
-     Positive X = right  | Negative X = left
-     Positive Y = down   | Negative Y = up
-  */
+  /* Position controls */
+  --desc-shift-x:0px;  --desc-shift-y:0px;
+  --photo-shift-x:0px; --photo-rise-y:20px;
+  --name-shift-x:-215px; --name-shift-y:-29px;
+  --disc-shift-x:-30px;  --disc-shift-y:13px;
 
-  /* Description paragraph */
-  --desc-shift-x: 0px;   /* right (+) / left (-) */
-  --desc-shift-y: 0px;   /* down (+) / up (-)   */
+  /* About sizes (Figma) */
+  --about-photo-w:604.103px;
+  --about-text-w:406px;
+  --about-gap:64px;
 
-  /* Photo */
-  --photo-shift-x: 0px;  /* right (+) / left (-) */
-  --photo-rise-y: 20px;  /* down (+) / up (-)    */
+  /* Portfolio overview */
+  --portfolio-gap:70px;
+  --portfolio-title-gap:20px;
 
-  /* Big name (outline heading) */
-  --name-shift-x: -215px; /* more negative = further left */
-  --name-shift-y: -29px;  /* negative = up */
-
-  /* Discipline */
-  --disc-shift-x: -30px;
-  --disc-shift-y: 13px;
-}
-
-/* ---------- Tokens for About page ---------- */
-:root{
-  /* Figma sizes */
-  --about-photo-w: 604.103px;  /* photo width */
-  --about-text-w: 406px;       /* text column width */
-  --about-gap: 64px;           /* gap between photo and text */
-
-  /* Stroke for the active nav item (30px font size) */
-  --stroke-nav: 1.5px;
-
-  /* Portfolio overview spacing */
-  --portfolio-gap: 70px;         /* space between cards */
-  --portfolio-title-gap: 20px;   /* space from image to title */
+  /* Project detail */
+  --project-columns-gap:32px;    /* keep in sync with .project-gallery gap */
+  --project-header-row-gap:28px; /* space between title and body/side facts */
+  --project-note-max:240px;      /* max width of side facts (optional) */
 }
 
 /* ------------ Base ------------ */
@@ -89,16 +73,14 @@ a{color:inherit; text-decoration:none}
 .container{max-width:var(--container-max); margin-inline:auto; padding-inline:24px}
 .section{padding-block:var(--gap-5)}
 
-/* ------------ Header (4 even columns, logo aligned left) ------------ */
+/* ------------ Header (4 even columns) ------------ */
 .site-header{ padding-block:24px; }
-
 .header-grid{
   display:grid; align-items:center;
-  grid-template-columns:repeat(4, 1fr); /* logo | link | link | contact */
+  grid-template-columns:repeat(4, 1fr);
   gap:24px;
 }
 .header-grid > *{ justify-self:center }
-
 .homewordmark{
   font:700 var(--fs-nav)/var(--lh-tight) "Tusker Grotesk";
   letter-spacing:var(--ls-logo-adjusted);
@@ -107,8 +89,6 @@ a{color:inherit; text-decoration:none}
   justify-self:start; /* align with hero left edge */
 }
 .homewordmark span{ display:block }
-
-/* Nav links = Tusker 5500 Medium */
 .header-link{
   font:500 var(--fs-nav)/var(--lh-tight) "Tusker Grotesk";
   letter-spacing:var(--ls-4pct);
@@ -116,10 +96,9 @@ a{color:inherit; text-decoration:none}
   color:var(--black);
 }
 .header-link:hover{ opacity:.85 }
-
 /* Active nav outlined (fallback + WebKit) */
 .header-link[aria-current="page"]{
-  color: transparent;
+  color:transparent;
   text-shadow:
      1px  0   0 #000, -1px  0   0 #000,
      0    1px 0 #000,  0   -1px 0 #000,
@@ -134,6 +113,8 @@ a{color:inherit; text-decoration:none}
     color:transparent;
   }
 }
+/* Contact link pinned flush right (site-wide) */
+.header-grid > .header-link:last-child{ justify-self:end }
 
 /* ------------ Hero (home) ------------ */
 .hero{ padding-block:var(--gap-5) }
@@ -153,7 +134,7 @@ a{color:inherit; text-decoration:none}
   transform:translate(var(--photo-shift-x), var(--photo-rise-y));
 }
 
-/* ------------ Big name — inner-stroke look (WebKit/Chromium) ------------ */
+/* ------------ Big name — inner-stroke (WebKit) ------------ */
 .name-outline,
 h1.name-outline{
   max-width:927px; margin:0 0 40px 0;
@@ -170,7 +151,6 @@ h1.name-outline{
      1px -1px 0 #000, -1px  1px 0 #000;
 }
 .name-outline span{ display:block }
-
 @supports (-webkit-text-stroke: 1px black){
   .name-outline,
   h1.name-outline{
@@ -178,11 +158,18 @@ h1.name-outline{
     -webkit-text-fill-color:transparent !important;
     -webkit-text-stroke:var(--stroke-name) var(--black);
     paint-order:stroke fill;
-    /* inner-bias */
     transform:scale(0.96) translate(var(--name-shift-x), var(--name-shift-y));
     color:transparent !important;
   }
 }
+
+/* ------------ Shared headline style (30px Tusker) ------------ */
+.about-headline, .work-title, .project-title{
+  font:700 30px/1.11539 "Tusker Grotesk";
+  letter-spacing:1.2px; text-transform:uppercase; color:#000;
+}
+.about-headline{ margin:0 0 16px 0 }
+.work-title, .project-title{ margin:0 }
 
 /* ------------ About page ------------ */
 .about-grid{
@@ -195,12 +182,6 @@ h1.name-outline{
   aspect-ratio:9/16; object-fit:cover; height:auto;
 }
 .about-right{ max-width:var(--about-text-w) }
-
-.about-headline{
-  font:700 30px/1.11539 "Tusker Grotesk";
-  letter-spacing:1.2px; text-transform:uppercase; color:#000;
-  margin:0 0 16px 0;
-}
 .about-body{ font:400 20px/1.09 var(--font-body); color:#000 }
 .about-body p{ margin:0 0 16px 0 }
 
@@ -213,7 +194,7 @@ h1.name-outline{
 .work{ margin:0 }
 .work-card{ display:grid; gap:var(--portfolio-title-gap); text-decoration:none; outline:none }
 .work-thumb{
-  width:100%; aspect-ratio:1/1; overflow:hidden; display:block; border:0;
+  width:100%; aspect-ratio:1/1; overflow:hidden; display:block;
 }
 .work-thumb img{
   width:100%; height:100%; object-fit:cover;
@@ -226,55 +207,49 @@ h1.name-outline{
 @media (prefers-reduced-motion:reduce){
   .work-thumb img{ transition:none }
 }
-.work-title{
-  font:700 30px/1.11539 "Tusker Grotesk";
-  letter-spacing:1.2px; text-transform:uppercase; color:#000; margin:0;
-}
 
-/* ------------ Project detail pages (wireframe) ------------ */
-/* Headline = same as About/Portfolio titles */
-.project-title{
-  font:700 30px/1.11539 "Tusker Grotesk";
-  letter-spacing:1.2px; text-transform:uppercase; color:#000; margin:0;
-}
-
-/* Title spans both cols; body + side note align at the same top line */
+/* ------------ Project detail (wireframe) ------------ */
+/* Title spans both; body + side facts top-aligned; right column flush right */
 .project-header{
   display:grid;
-  grid-template-columns:minmax(0, 630px) 240px; /* body | side note */
-  column-gap:24px; row-gap:16px; align-items:start; margin-bottom:24px;
+  grid-template-columns:1fr 1fr; /* match gallery */
+  column-gap:var(--project-columns-gap);
+  row-gap:var(--project-header-row-gap);
+  align-items:start;
+  margin-bottom:24px;
 }
-.project-title{ grid-column:1 / -1 } /* row 1 */
+.project-title{ grid-column:1 / -1 }
 .project-lede{
-  grid-column:1;
+  grid-column:1; align-self:start;
   max-width:630px;
   font:400 20px/1.09 var(--font-body);
-  color:#000; /* solid for readability */
+  color:#000;
 }
-/* Optional: outline body text per Figma (WebKit only) – add class="project-lede outline" */
+/* optional outline body copy (WebKit only) – add class="project-lede outline" */
 .project-lede.outline p{
   -webkit-text-fill-color:transparent;
   -webkit-text-stroke:5px #000;
   color:transparent;
 }
 .project-note{
-  grid-column:2; align-self:start; text-align:right;
+  grid-column:2; align-self:start;
+  justify-self:end; text-align:right;  /* flush right edge */
+  max-width:var(--project-note-max);
   font:italic 16px/1.4 var(--font-body); color:#000;
 }
 
 /* Heroes + gallery */
 .project-hero{ margin:24px 0 48px }
 .project-hero-img{ width:100%; height:auto; display:block }
-
-/* Gallery grid: 2 columns; use .span-2 to go full width; .square to force square crop */
 .project-gallery{
-  display:grid; grid-template-columns:1fr 1fr; gap:32px;
+  display:grid; grid-template-columns:1fr 1fr; gap:var(--project-columns-gap);
 }
+.project-gallery figure{ margin:0 }   /* ensure span-2 is full width */
 .project-gallery .span-2{ grid-column:1 / -1 }
 .project-gallery .square{ aspect-ratio:1/1; overflow:hidden }
 .project-gallery .square img{ width:100%; height:100%; object-fit:cover }
 
-/* Hover zoom for hero + gallery */
+/* Hover zoom (hero + gallery) */
 .zoom{ overflow:hidden }
 .zoom img{ transform:scale(1); transition:transform 300ms ease }
 @media (hover:hover){
@@ -320,99 +295,3 @@ h1.name-outline{
   .header-grid{ grid-template-columns:repeat(4, 1fr); row-gap:12px }
   .homewordmark{ justify-self:center }
 }
-
-/* === MMK: align side facts with the right column of images === */
-:root{
-  --project-columns-gap: 32px;    /* must match .project-gallery gap */
-  --project-header-row-gap: 28px; /* space between title and body/side facts */
-  --project-note-max: 240px;      /* optional width cap for the side facts */
-}
-
-.project-header{
-  display: grid;
-  grid-template-columns: 1fr 1fr;                 /* match gallery columns */
-  column-gap: var(--project-columns-gap);
-  row-gap: var(--project-header-row-gap);
-  align-items: start;
-  margin-bottom: 24px;
-}
-
-.project-title{
-  grid-column: 1 / -1;                           /* title spans both columns */
-}
-
-.project-lede{
-  grid-column: 1;                                 /* body on the left column */
-  max-width: 630px;                               /* your Figma width */
-  font: 400 20px/1.09 var(--font-body);
-  color: #000;
-}
-
-.project-note{
-  grid-column: 2;                                 /* side facts in right column */
-  justify-self: start;                            /* left edge of column */
-  text-align: left;                               /* rag-left to align with images */
-  max-width: var(--project-note-max);             /* remove this line if you want it wider */
-  font: italic 16px/1.4 var(--font-body);
-  color: #000;
-}
-
-/* === MMK: make hero #2 as wide as hero #1, and align side facts === */
-
-/* Remove default figure margins inside the gallery so span-2 is full width */
-.project-gallery figure{ margin: 0; }
-
-/* Align side facts to the right column and flush right edge */
-.project-header{
-  grid-template-columns: 1fr 1fr;   /* match the gallery's two equal columns */
-  column-gap: 32px;                 /* match .project-gallery gap */
-  row-gap: 28px;                    /* space between title and body/side facts */
-}
-
-.project-note{
-  grid-column: 2;        /* right column */
-  justify-self: end;     /* snap the block’s right edge to the column’s right edge */
-  text-align: right;     /* rag-right text to match the image edge */
-  max-width: 240px;      /* optional cap; remove if you want it wider */
-}
-
-/* Contact link pinned to the right edge of the container (site-wide) */
-.header-grid > .header-link:last-child { justify-self: end; }
-
-/* Match header columns to the gallery (2 equal cols) and top-align content */
-:root{
-  --project-columns-gap: 32px;    /* keep in sync with .project-gallery gap */
-  --project-header-row-gap: 28px; /* space between title and body/side facts */
-  --project-note-max: 240px;      /* cap width of side facts (optional) */
-}
-
-.project-header{
-  display: grid;
-  grid-template-columns: 1fr 1fr;           /* same as gallery */
-  column-gap: var(--project-columns-gap);
-  row-gap: var(--project-header-row-gap);
-  align-items: start;                       /* top align both columns */
-  margin-bottom: 24px;
-}
-.project-title{ grid-column: 1 / -1; }      /* title across both columns */
-
-.project-lede{
-  grid-column: 1;                           /* left column */
-  align-self: start;                        /* top-aligned */
-  max-width: 630px;
-  font: 400 20px/1.09 var(--font-body);
-  color: #000;
-}
-
-.project-note{
-  grid-column: 2;                           /* right column */
-  align-self: start;                        /* top-aligned */
-  justify-self: end;                        /* flush right edge */
-  text-align: right;                        /* rag-right to match image edge */
-  max-width: var(--project-note-max);
-  font: italic 16px/1.4 var(--font-body);
-  color: #000;
-}
-
-/* Remove default figure margins so the span-2 hero is truly full width */
-.project-gallery figure{ margin: 0; }
