@@ -345,3 +345,14 @@ h1.name-outline{
   .homewordmark{ order: -1; width: 100%; } /* logo on its own row, left-aligned */
 }
 
+/* Hero subhead (under the big name) — force Tusker 5700 Bold */
+.hero .discipline{
+  font-family: "Tusker Grotesk", sans-serif;
+  font-weight: 700;                     /* 5700 Bold */
+  font-size: var(--fs-discipline);      /* 30px */
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-4pct);
+  text-transform: uppercase;
+  color: #000;
+}
+
