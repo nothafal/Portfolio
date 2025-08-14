@@ -300,7 +300,7 @@ h1.name-outline{
 :root{
   /* tweak these two freely */
   --project-header-row-gap: 28px; /* space between the title and the row below (body + side facts) */
-  --project-note-top: 0px;        /* fine vertical nudge of side facts (use +px to move down, -px up) */
+  --project-note-top: 10px;        /* fine vertical nudge of side facts (use +px to move down, -px up) */
 }
 
 /* header row: two equal columns (matches gallery), top aligned */
@@ -344,3 +344,4 @@ h1.name-outline{
   }
   .homewordmark{ order: -1; width: 100%; } /* logo on its own row, left-aligned */
 }
+
