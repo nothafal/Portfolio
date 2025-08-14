@@ -74,26 +74,33 @@ a{color:inherit; text-decoration:none}
 .container{max-width:var(--container-max); margin-inline:auto; padding-inline:24px}
 .section{padding-block:var(--gap-5)}
 
-/* ------------ Header (4 even columns) ------------ */
-.site-header{padding-block:24px}
+/* ------------ Header (4 even columns, aligned with hero) ------------ */
+.site-header{
+  padding-block:24px;
+}
 
 .header-grid{
-  display:grid; align-items:center;
+  display:grid;
+  align-items:center;
   grid-template-columns:repeat(4, 1fr); /* 4 equal columns: logo | link | link | contact */
   gap:24px;
 }
 
-/* Place each header item into its column in source order */
-.header-grid > *{justify-self:center}
+.header-grid > *{
+  justify-self:center;
+}
 
-/* Home wordmark sits in column 1, centered for even spacing */
+/* Align logo to container left edge */
 .homewordmark{
   font:700 var(--fs-nav)/var(--lh-tight) "Tusker Grotesk";
   letter-spacing:var(--ls-logo-adjusted);
   text-transform:uppercase;
   color:var(--black);
+  justify-self:start; /* <-- ensures it hugs left like hero text */
 }
-.homewordmark span{display:block}
+.homewordmark span{
+  display:block;
+}
 
 /* Nav links (columns 2 & 3) + Contact (column 4) */
 .header-link{
@@ -102,10 +109,14 @@ a{color:inherit; text-decoration:none}
   text-transform:uppercase;
   color:var(--black);
 }
-.header-link:hover{opacity:.85}
+.header-link:hover{
+  opacity:.85;
+}
 
 /* Remove the old right-padding hack so spacing stays truly even */
-.header-link:last-child{ padding-right:0; }
+.header-link:last-child{
+  padding-right:0;
+}
 
 /* ------------ Hero ------------ */
 .hero{padding-block:var(--gap-5)}
@@ -229,3 +240,4 @@ h1.name-outline{
 
   .homewordmark{justify-self:center}
 }
+
