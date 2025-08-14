@@ -4,40 +4,40 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About – Alyssa Chanyanut Nothaft</title>
+  <meta name="description" content="About Alyssa Chanyanut Nothaft">
 
-  <!-- Preload your display font (optional but snappy) -->
+  <!-- Body font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Preload display font -->
   <link rel="preload" href="../TuskerGrotesk-5700Bold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../styles.css">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../styles.css?v=21">
 </head>
 <body>
 
-  <!-- Header (same as index), but mark ABOUT as current -->
+  <!-- Header: mark About as current -->
   <header class="site-header">
-    <div class="container">
-      <div class="header-grid">
-        <a class="homewordmark" href="../">
-          <span>ALYSSA</span>
-          <span>CHANYANUT</span>
-          <span>NOTHAFT</span>
-        </a>
-
-        <!-- These two are your centered middle links on desktop -->
-        <a class="header-link" href="../about/" aria-current="page">About Me</a>
-        <a class="header-link" href="../#portfolio">Portfolio</a>
-
-        <!-- Rightmost link -->
-        <a class="header-link" href="../#contact">Contact Me</a>
-      </div>
+    <div class="container header-grid">
+      <a class="homewordmark" href="../" aria-label="Home">
+        <span>Alyssa</span>
+        <span>Chanyanut</span>
+        <span>Nothaft</span>
+      </a>
+      <a class="header-link" href="../about/" aria-current="page">About Me</a>
+      <a class="header-link" href="../#portfolio">Portfolio</a>
+      <a class="header-link" href="../#contact">Contact me</a>
     </div>
   </header>
 
+  <!-- About layout -->
   <main class="section">
     <div class="container">
       <section class="about-grid">
-        <!-- Photo (9:16 aspect) -->
-        <img class="about-photo" src="../images/about.jpg" alt="Alyssa overlooking the water">
+        <!-- About page photo -->
+        <img class="about-photo" src="../About-Me-Image.jpg" alt="Alyssa overlooking the water">
 
-        <!-- Text column -->
         <div class="about-right">
           <h2 class="about-headline">About Me</h2>
 
