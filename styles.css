@@ -33,32 +33,32 @@
   --ls-logo-adjusted:calc(var(--ls-logo) - 0.02em);
   --ls-name:6.4px;
 
-  /* Stroke thickness for outlined name text */
-  --stroke-name:3.5px; /* Increased from 3px to 4.5px for 50% thicker outline */
+  /* Outline thickness for the big name */
+  --stroke-name:3.5px;
 
   --container-max:1360px;
   --gap-3:32px; --gap-4:48px; --gap-5:64px;
 
   /* ---------- Position controls ----------
-     Positive X moves right, negative X moves left
-     Positive Y moves down, negative Y moves up
+     Positive X = move right  | Negative X = move left
+     Positive Y = move down   | Negative Y = move up
   */
 
-  /* Position of description text */
-  --desc-shift-x: 0px;
-  --desc-shift-y: 0px;
+  /* Description paragraph position */
+  --desc-shift-x: 0px;   /* right (+) / left (-) */
+  --desc-shift-y: 0px;   /* down (+) / up (-)   */
 
-  /* Position of photo */
-  --photo-shift-x: 0px;
-  --photo-rise-y: 20px;
+  /* Photo position */
+  --photo-shift-x: 0px;  /* right (+) / left (-) */
+  --photo-rise-y: 20px;  /* down (+) / up (-)    */
 
-  /* Position of big name (outline heading) */
-  --name-shift-x: -225px; /* More negative = further left, more positive = further right */
-  --name-shift-y: -32px;  /* More negative = higher up, more positive = lower down */
+  /* Big name (outline heading) position */
+  --name-shift-x: -215px; /* further left with more negative; right with positive */
+  --name-shift-y: -29px;  /* up with negative; down with positive */
 
-  /* Position of discipline text */
-  --disc-shift-x: -30px;
-  --disc-shift-y: 5px;
+  /* Discipline label position */
+  --disc-shift-x: -30px;  /* left (-) / right (+) */
+  --disc-shift-y: 13px;   /* up (-) / down (+)    */
 }
 
 /* ------------ Base ------------ */
@@ -74,15 +74,19 @@ a{color:inherit; text-decoration:none}
 .container{max-width:var(--container-max); margin-inline:auto; padding-inline:24px}
 .section{padding-block:var(--gap-5)}
 
-/* ------------ Header ------------ */
+/* ------------ Header (4 even columns) ------------ */
 .site-header{padding-block:24px}
+
 .header-grid{
   display:grid; align-items:center;
-  grid-template-columns:repeat(4, 1fr);
+  grid-template-columns:repeat(4, 1fr); /* 4 equal columns: logo | link | link | contact */
+  gap:24px;
 }
-.header-grid > *{justify-self:center}
-.homewordmark{justify-self:start}
 
+/* Place each header item into its column in source order */
+.header-grid > *{justify-self:center}
+
+/* Home wordmark sits in column 1, centered for even spacing */
 .homewordmark{
   font:700 var(--fs-nav)/var(--lh-tight) "Tusker Grotesk";
   letter-spacing:var(--ls-logo-adjusted);
@@ -91,7 +95,7 @@ a{color:inherit; text-decoration:none}
 }
 .homewordmark span{display:block}
 
-/* Nav links = Tusker 5500 Medium */
+/* Nav links (columns 2 & 3) + Contact (column 4) */
 .header-link{
   font:500 var(--fs-nav)/var(--lh-tight) "Tusker Grotesk";
   letter-spacing:var(--ls-4pct);
@@ -100,11 +104,8 @@ a{color:inherit; text-decoration:none}
 }
 .header-link:hover{opacity:.85}
 
-/* Align "Contact me" to big name */
-.header-link:last-child{
-  justify-self:end;
-  padding-right: calc((100% - var(--container-max)) / 2);
-}
+/* Remove the old right-padding hack so spacing stays truly even */
+.header-link:last-child{ padding-right:0; }
 
 /* ------------ Hero ------------ */
 .hero{padding-block:var(--gap-5)}
@@ -134,8 +135,8 @@ a{color:inherit; text-decoration:none}
   transform: translate(var(--photo-shift-x), var(--photo-rise-y));
 }
 
-/* ------------ Big name — outline only ------------ */
-/* Base (Firefox-friendly) fallback uses text-shadow for a thin outline. */
+/* ------------ Big name — inner-stroke look (WebKit/Chromium) ------------ */
+/* Base (Firefox-friendly) fallback uses text-shadow; looks like a normal outline. */
 .name-outline,
 h1.name-outline{
   max-width:927px;
@@ -146,11 +147,11 @@ h1.name-outline{
   position: relative;
   z-index: 4;
 
-  /* transparent interior everywhere */
+  /* keep interior transparent everywhere */
   color: transparent !important;
 
-  /* keep your nudge/positioning */
-  transform: scale(0.96) translate(var(--name-shift-x), var(--name-shift-y));
+  /* Positioning nudge via variables (do NOT rely on this for layout) */
+  transform: translate(var(--name-shift-x), var(--name-shift-y));
 
   /* Firefox fallback (Chromium/Safari will be overridden below) */
   text-shadow:
@@ -165,13 +166,18 @@ h1.name-outline{
 }
 .name-outline span{display:block}
 
-/* If the browser supports -webkit-text-stroke, use a true stroke and remove shadows. */
+/* WebKit/Chromium: use true stroke, clip it visually to the inside via slight downscale */
 @supports (-webkit-text-stroke: 1px black){
   .name-outline,
   h1.name-outline{
     text-shadow: none;
     -webkit-text-fill-color: transparent !important;
     -webkit-text-stroke: var(--stroke-name) var(--black);
+    paint-order: stroke fill; /* render stroke before (transparent) fill */
+
+    /* Slight downscale makes most of the stroke sit inside the original contour.
+       Tweak toward 0.97 for more inner bias, 0.99 for subtler effect. */
+    transform: scale(0.985) translate(var(--name-shift-x), var(--name-shift-y));
     color: transparent !important;
   }
 }
@@ -193,25 +199,33 @@ h1.name-outline{
 @media (max-width:1100px){
   :root{
     --fs-name:clamp(72px,10vw,140px);
-    --stroke-name:3.75px; /* 50% thicker than old mobile value */
+    --stroke-name:3px;   /* scaled down from 3.5px */
     --photo-shift-x:0px; --photo-rise-y:-60px;
     --desc-shift-x:0px;  --desc-shift-y:0px;
     --name-shift-x:0px;  --name-shift-y:0px;
     --disc-shift-x:0px;  --disc-shift-y:0px;
   }
+
   .hero-grid{grid-template-columns:1fr}
+
   .hero-photo{width:min(420px,90vw); height:auto;}
 }
+
 @media (max-width:600px){
   :root{
     --fs-nav:16px; --fs-discipline:22px;
-    --stroke-name:3px; /* 50% thicker than old smallest value */
+    --stroke-name:2.5px; /* scaled down from 3.5px */
     --photo-shift-x:0px; --photo-rise-y:0px;
     --desc-shift-x:0px;  --desc-shift-y:0px;
     --name-shift-x:0px;  --name-shift-y:0px;
     --disc-shift-x:0px;  --disc-shift-y:0px;
   }
-  .header-grid{grid-template-columns:1fr 1fr; row-gap:12px}
-  .homewordmark{grid-column:1 / -1; justify-self:start}
-}
 
+  /* Header: still 4 equal columns so items remain evenly spaced */
+  .header-grid{
+    grid-template-columns:repeat(4, 1fr);
+    row-gap:12px;
+  }
+
+  .homewordmark{justify-self:center}
+}
