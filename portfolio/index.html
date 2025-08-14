@@ -3,59 +3,103 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MMK – Portfolio – Alyssa Chanyanut Nothaft</title>
-  <meta name="description" content="Project details for MMK">
+  <title>Portfolio – Alyssa Chanyanut Nothaft</title>
+  <meta name="description" content="Selected work by Alyssa Chanyanut Nothaft">
 
+  <!-- Body font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
-  <link rel="preload" href="../../TuskerGrotesk-5700Bold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../styles.css?v=25">
+  <!-- Preload display font (optional) -->
+  <link rel="preload" href="../TuskerGrotesk-5700Bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="../styles.css?v=26">
 </head>
 <body>
 
-  <!-- Header: keep Portfolio active -->
+  <!-- Header: mark Portfolio as current (outline style) -->
   <header class="site-header">
     <div class="container header-grid">
-      <a class="homewordmark" href="../../" aria-label="Home">
+      <a class="homewordmark" href="../" aria-label="Home">
         <span>Alyssa</span><span>Chanyanut</span><span>Nothaft</span>
       </a>
-      <a class="header-link" href="../../about/">About Me</a>
-      <a class="header-link" href="../../portfolio/" aria-current="page">Portfolio</a>
-      <a class="header-link" href="../../#contact">Contact me</a>
+      <a class="header-link" href="../about/">About Me</a>
+      <a class="header-link" href="../portfolio/" aria-current="page">Portfolio</a>
+      <a class="header-link" href="../#contact">Contact me</a>
     </div>
   </header>
 
   <main class="section">
     <div class="container">
+      <ul class="portfolio-grid">
+        <!-- Card 1 -->
+        <li class="work">
+          <a class="work-card" href="./mmk/">
+            <span class="work-thumb">
+              <img src="../images/portfolio/mmk.png" alt="MMK project cover">
+            </span>
+            <span class="work-title">MMK</span>
+          </a>
+        </li>
 
-      <!-- Title (row 1), body + side note (row 2) -->
-      <div class="project-header">
-        <h1 class="project-title">Münchner Management Kolloquium</h1>
+        <!-- Card 2 -->
+        <li class="work">
+          <a class="work-card" href="./spiegel/">
+            <span class="work-thumb">
+              <img src="../images/portfolio/spiegel.png" alt="DER SPIEGEL cover">
+            </span>
+            <span class="work-title">Der Spiegel</span>
+          </a>
+        </li>
 
-        <div class="project-lede">
-          <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
-          <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-        </div>
+        <!-- Card 3 -->
+        <li class="work">
+          <a class="work-card" href="./vdc/">
+            <span class="work-thumb">
+              <img src="../images/portfolio/vdc.png" alt="Visual Discovery Conference cover">
+            </span>
+            <span class="work-title">Visual Discovery Conference</span>
+          </a>
+        </li>
 
-        <aside class="project-note">Side facts in cursive</aside>
-      </div>
+        <!-- Card 4 -->
+        <li class="work">
+          <a class="work-card" href="./wubv/">
+            <span class="work-thumb">
+              <img src="../images/portfolio/wubv.png" alt="WUBV cover">
+            </span>
+            <span class="work-title">WUBV</span>
+          </a>
+        </li>
 
-      <!-- HERO #1 -->
-      <figure class="project-hero zoom">
-        <img class="project-hero-img" src="./images/mmk.png" alt="MMK stage photo">
-      </figure>
+        <!-- Card 5 -->
+        <li class="work">
+          <a class="work-card" href="./werkschau-winter-2021/">
+            <span class="work-thumb">
+              <img src="../images/portfolio/werkschau.png" alt="Werkschau Winter 2021 cover">
+            </span>
+            <span class="work-title">Werkschau Winter 2021</span>
+          </a>
+        </li>
 
-      <!-- GALLERY: squares 1–2, HERO #2, squares 4–5 -->
-      <div class="project-gallery">
-        <figure class="zoom square"><img src="./images/mmk-gallery-1.jpg" alt="MMK gallery image 1"></figure>
-        <figure class="zoom square"><img src="./images/mmk-gallery-2.jpg" alt="MMK gallery image 2"></figure>
+        <!-- Card 6 -->
+        <li class="work">
+          <a class="work-card" href="./menopause/">
+            <span class="work-thumb">
+              <img src="../images/portfolio/menopause.png" alt="Menopause cover">
+            </span>
+            <span class="work-title">Menopause</span>
+          </a>
+        </li>
 
-        <!-- HERO #2 (full width across both columns) -->
-        <figure class="zoom span-2"><img src="./images/mmk-gallery-3.jpg" alt="MMK gallery image 3 wide"></figure>
-
-        <figure class="zoom square"><img src="./images/mmk-gallery-4.jpg" alt="MMK gallery image 4"></figure>
-        <figure class="zoom square"><img src="./images/mmk-gallery-5.jpg" alt="MMK gallery image 5"></figure>
-      </div>
-
+        <!-- Card 7 -->
+        <li class="work">
+          <a class="work-card" href="./akkordeon/">
+            <span class="work-thumb">
+              <img src="../images/portfolio/akkordeon.png" alt="Akkordeon cover">
+            </span>
+            <span class="work-title">Akkordeon</span>
+          </a>
+        </li>
+      </ul>
     </div>
   </main>
 
