@@ -32,6 +32,7 @@
   --container-max:1360px;
   --gap-3:32px; --gap-4:48px; --gap-5:64px;
 
+  /* controls how far the photo tucks under the big name */
   --photo-shift-x:0px;
   --photo-rise-y:-140px;
 }
@@ -87,22 +88,24 @@ a{color:inherit; text-decoration:none}
   width:351px; margin:0 0 var(--gap-3) 0;
   font:400 20px/1.09 var(--font-body);
   color:#000;
+
+  /* lower than photo so the image can overlap it */
   position: relative;
-  z-index: 3; /* above the photo */
+  z-index: 1;
 }
 
-/* Photo — keep proportions, underlap the name */
+/* Photo — keep proportions, overlap paragraph, sit below big name */
 .hero-photo{
   width:514px;
   height:auto;                 /* keep natural aspect ratio */
   display:block;
 
   position: relative;
-  z-index: 1;                   /* below big name */
+  z-index: 3;                  /* above paragraph, below outlined name */
   transform: translate(var(--photo-shift-x), var(--photo-rise-y));
 }
 
-/* Big name — true outline */
+/* Big name — true outline, no fill, on top of photo */
 .name-outline{
   max-width:927px;
   margin:0 0 40px 0;
@@ -111,16 +114,18 @@ a{color:inherit; text-decoration:none}
   text-transform:uppercase;
 
   position: relative;
-  z-index: 2; /* above photo */
+  z-index: 4; /* above photo */
 
+  /* outline-only text across browsers */
   color:transparent !important;
   -webkit-text-fill-color:transparent !important;
   -webkit-text-stroke:var(--stroke-name) var(--black);
+  /* Firefox fallback outline (keeps center transparent) */
   text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000;
 }
 .name-outline span{display:block}
 
-/* Discipline — above the image */
+/* Discipline — above everything nearby */
 .discipline{
   width:min(583px,100%);
   margin:0;
@@ -129,7 +134,7 @@ a{color:inherit; text-decoration:none}
   text-transform:uppercase;
   color:#000;
   position: relative;
-  z-index: 3;
+  z-index: 5;
 }
 
 /* ------------ Responsive ------------ */
@@ -154,6 +159,6 @@ a{color:inherit; text-decoration:none}
   .header-grid{grid-template-columns:1fr 1fr; row-gap:12px}
   .homewordmark{grid-column:1 / -1; justify-self:start}
   .hero-photo{
-    transform: translate(0,0); /* no overlap on tiny screens */
+    transform: translate(0,0);
   }
 }
