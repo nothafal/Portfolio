@@ -34,7 +34,7 @@
   --ls-name:6.4px;
 
   /* Stroke thickness for outlined name text */
-  --stroke-name:4.5px; /* Increased from 3px to 4.5px for 50% thicker outline */
+  --stroke-name:3.5px; /* Increased from 3px to 4.5px for 50% thicker outline */
 
   --container-max:1360px;
   --gap-3:32px; --gap-4:48px; --gap-5:64px;
@@ -53,12 +53,12 @@
   --photo-rise-y: 20px;
 
   /* Position of big name (outline heading) */
-  --name-shift-x: -215px; /* More negative = further left, more positive = further right */
-  --name-shift-y: -29px;  /* More negative = higher up, more positive = lower down */
+  --name-shift-x: -225px; /* More negative = further left, more positive = further right */
+  --name-shift-y: -32px;  /* More negative = higher up, more positive = lower down */
 
   /* Position of discipline text */
   --disc-shift-x: -30px;
-  --disc-shift-y: 13px;
+  --disc-shift-y: 5px;
 }
 
 /* ------------ Base ------------ */
@@ -214,3 +214,4 @@ h1.name-outline{
   .header-grid{grid-template-columns:1fr 1fr; row-gap:12px}
   .homewordmark{grid-column:1 / -1; justify-self:start}
 }
+
