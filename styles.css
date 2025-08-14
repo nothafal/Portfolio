@@ -331,8 +331,8 @@ h1.name-outline{
    PORTFOLIO OVERVIEW
    ======================= */
 :root{
-  --portfolio-gap: 64px;         /* space between cards */
-  --portfolio-title-gap: 12px;   /* space from image to title */
+  --portfolio-gap: 70px;         /* space between cards */
+  --portfolio-title-gap: 20px;   /* space from image to title */
 }
 
 /* 2-column grid of cards */
@@ -456,6 +456,7 @@ h1.name-outline{
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
