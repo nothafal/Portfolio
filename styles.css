@@ -376,3 +376,43 @@ h1.name-outline{
   max-width: 240px;      /* optional cap; remove if you want it wider */
 }
 
+/* Contact link pinned to the right edge of the container (site-wide) */
+.header-grid > .header-link:last-child { justify-self: end; }
+
+/* Match header columns to the gallery (2 equal cols) and top-align content */
+:root{
+  --project-columns-gap: 32px;    /* keep in sync with .project-gallery gap */
+  --project-header-row-gap: 28px; /* space between title and body/side facts */
+  --project-note-max: 240px;      /* cap width of side facts (optional) */
+}
+
+.project-header{
+  display: grid;
+  grid-template-columns: 1fr 1fr;           /* same as gallery */
+  column-gap: var(--project-columns-gap);
+  row-gap: var(--project-header-row-gap);
+  align-items: start;                       /* top align both columns */
+  margin-bottom: 24px;
+}
+.project-title{ grid-column: 1 / -1; }      /* title across both columns */
+
+.project-lede{
+  grid-column: 1;                           /* left column */
+  align-self: start;                        /* top-aligned */
+  max-width: 630px;
+  font: 400 20px/1.09 var(--font-body);
+  color: #000;
+}
+
+.project-note{
+  grid-column: 2;                           /* right column */
+  align-self: start;                        /* top-aligned */
+  justify-self: end;                        /* flush right edge */
+  text-align: right;                        /* rag-right to match image edge */
+  max-width: var(--project-note-max);
+  font: italic 16px/1.4 var(--font-body);
+  color: #000;
+}
+
+/* Remove default figure margins so the span-2 hero is truly full width */
+.project-gallery figure{ margin: 0; }
