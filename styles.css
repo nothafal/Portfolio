@@ -357,4 +357,22 @@ h1.name-outline{
   color: #000;
 }
 
+/* === MMK: make hero #2 as wide as hero #1, and align side facts === */
+
+/* Remove default figure margins inside the gallery so span-2 is full width */
+.project-gallery figure{ margin: 0; }
+
+/* Align side facts to the right column and flush right edge */
+.project-header{
+  grid-template-columns: 1fr 1fr;   /* match the gallery's two equal columns */
+  column-gap: 32px;                 /* match .project-gallery gap */
+  row-gap: 28px;                    /* space between title and body/side facts */
+}
+
+.project-note{
+  grid-column: 2;        /* right column */
+  justify-self: end;     /* snap the block’s right edge to the column’s right edge */
+  text-align: right;     /* rag-right text to match the image edge */
+  max-width: 240px;      /* optional cap; remove if you want it wider */
+}
 
