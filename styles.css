@@ -177,7 +177,7 @@ h1.name-outline{
 }
 .name-outline span{display:block}
 
-/* WebKit/Chromium: use true stroke, clip it visually to the inside via slight downscale */
+/* WebKit/Chromium: use true stroke, clip it visually to the inside via downscale */
 @supports (-webkit-text-stroke: 1px black){
   .name-outline,
   h1.name-outline{
@@ -186,9 +186,10 @@ h1.name-outline{
     -webkit-text-stroke: var(--stroke-name) var(--black);
     paint-order: stroke fill; /* render stroke before (transparent) fill */
 
-    /* Slight downscale makes most of the stroke sit inside the original contour.
-       Tweak toward 0.97 for more inner bias, 0.99 for subtler effect. */
-    transform: scale(0.985) translate(var(--name-shift-x), var(--name-shift-y));
+    /* More obvious inner stroke:
+       - scale(0.96) shrinks letters so more stroke sits inside
+       - lower values = more inner bias, but can distort spacing */
+    transform: scale(0.96) translate(var(--name-shift-x), var(--name-shift-y));
     color: transparent !important;
   }
 }
@@ -240,4 +241,5 @@ h1.name-outline{
 
   .homewordmark{justify-self:center}
 }
+
 
