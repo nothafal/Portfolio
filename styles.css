@@ -61,6 +61,92 @@
   --disc-shift-y: 13px;   /* up (-) / down (+)    */
 }
 
+/* ---------- Tokens for About page ---------- */
+:root{
+  /* About page layout sizes from Figma */
+  --about-photo-w: 604.103px;  /* photo width */
+  --about-text-w: 406px;       /* text column width */
+  --about-gap: 64px;           /* space between photo and text */
+
+  /* Stroke for the active nav item at 30px font size */
+  --stroke-nav: 1.5px;
+}
+
+/* ---------- Active nav item outlined (same size/font) ---------- */
+/* Base (fallback for Firefox) */
+.header-link[aria-current="page"]{
+  color: transparent;
+  text-shadow:
+     1px  0   0 #000,
+    -1px  0   0 #000,
+     0    1px 0 #000,
+     0   -1px 0 #000,
+     1px  1px 0 #000,
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000;
+}
+
+/* WebKit/Chromium: real stroke, no fill */
+@supports (-webkit-text-stroke: 1px black){
+  .header-link[aria-current="page"]{
+    text-shadow: none;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: var(--stroke-nav) var(--black);
+    color: transparent;
+  }
+}
+
+/* ---------- About page layout ---------- */
+.about-grid{
+  display:grid;
+  grid-template-columns: minmax(0, var(--about-photo-w)) minmax(0, var(--about-text-w));
+  gap: var(--about-gap);
+  align-items: start;
+}
+
+/* 9:16 image, keep proportions */
+.about-photo{
+  width: min(100%, var(--about-photo-w));
+  aspect-ratio: 9 / 16;
+  object-fit: cover;  /* trims if your source isn’t exactly 9:16 */
+  height: auto;
+}
+
+/* Right column width + typography */
+.about-right{
+  max-width: var(--about-text-w);
+}
+
+.about-headline{
+  /* Tusker 5700 Bold, size 30, black, uppercase, 1.2px letter-spacing */
+  font: 700 30px/1.11539 "Tusker Grotesk";
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #000;
+  margin: 0 0 16px 0;
+}
+
+.about-body{
+  /* Match index body text */
+  font: 400 20px/1.09 var(--font-body);
+  color: #000;
+}
+.about-body p{ margin: 0 0 16px 0; }
+
+/* ---------- Responsive stack ---------- */
+@media (max-width: 1100px){
+  .about-grid{
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .about-photo{
+    width: min(100%, 420px);
+    margin-inline: 0;
+  }
+  .about-right{ max-width: 600px; }
+}
+
 /* ------------ Base ------------ */
 *{box-sizing:border-box}
 html,body{margin:0}
@@ -241,5 +327,6 @@ h1.name-outline{
 
   .homewordmark{justify-self:center}
 }
+
 
 
