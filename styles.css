@@ -295,3 +295,52 @@ h1.name-outline{
   .header-grid{ grid-template-columns:repeat(4, 1fr); row-gap:12px }
   .homewordmark{ justify-self:center }
 }
+
+/* === MMK side-facts controls === */
+:root{
+  /* tweak these two freely */
+  --project-header-row-gap: 28px; /* space between the title and the row below (body + side facts) */
+  --project-note-top: 0px;        /* fine vertical nudge of side facts (use +px to move down, -px up) */
+}
+
+/* header row: two equal columns (matches gallery), top aligned */
+.project-header{
+  grid-template-columns: 1fr 1fr;              /* left = body, right = side facts */
+  row-gap: var(--project-header-row-gap);      /* title → row spacing */
+  column-gap: var(--project-columns-gap);      /* stays in sync with gallery gap */
+  align-items: start;                           /* top-align both columns */
+}
+
+.project-lede{
+  grid-column: 1;
+  align-self: start;
+  margin-top: 0;                                /* ensure no accidental offset */
+}
+
+.project-note{
+  grid-column: 2;
+  align-self: start;                            /* top with body */
+  justify-self: end;                            /* flush with right edge of column */
+  text-align: right;                            /* rag-right to the column edge */
+  margin-top: var(--project-note-top);          /* fine vertical nudge control */
+}
+
+/* === Even spacing across the 4 header items (logo, About, Portfolio, Contact) === */
+.header-grid{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  /* equal gaps between the 4 items */
+  gap: 0;                           /* let space-between do the spacing */
+}
+
+/* remove grid-specific alignment that could fight flex */
+.header-grid > *{ justify-self: initial; }
+
+/* mobile: allow wrapping and keep it neat */
+@media (max-width: 600px){
+  .header-grid{
+    flex-wrap: wrap;
+    row-gap: 12px;
+  }
+  .homewordmark{ order: -1; width: 100%; } /* logo on its own row, left-aligned */
+}
