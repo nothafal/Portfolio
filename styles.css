@@ -1,17 +1,17 @@
 /* ------------ Tusker Grotesk (files in your repo root) ------------ */
 @font-face{
   font-family:"Tusker Grotesk";
-  src:url("./TuskerGrotesk-5500Medium.woff2") format("woff2");
+  src:url("./fonts/TuskerGrotesk-5500Medium.woff2") format("woff2");
   font-weight:500; font-style:normal; font-display:swap;
 }
 @font-face{
   font-family:"Tusker Grotesk";
-  src:url("./TuskerGrotesk-5700Bold.woff2") format("woff2");
+  src:url("./fonts/TuskerGrotesk-5700Bold.woff2") format("woff2");
   font-weight:700; font-style:normal; font-display:swap;
 }
 @font-face{
   font-family:"Tusker Grotesk";
-  src:url("./TuskerGrotesk-5800Super.woff2") format("woff2");
+  src:url("./fonts/TuskerGrotesk-5800Super.woff2") format("woff2");
   font-weight:800; font-style:normal; font-display:swap;
 }
 
@@ -456,6 +456,7 @@ h1.name-outline{
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
