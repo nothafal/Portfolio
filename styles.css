@@ -125,7 +125,7 @@ a{color:inherit; text-decoration:none}
   transform: translate(var(--photo-shift-x), var(--photo-rise-y));
 }
 
-/* Big name — transparent fill, stroke mostly outside */
+/* Big name — transparent fill, stroke appears outside */
 .name-outline{
   max-width:927px;
   margin:0 0 40px 0;
@@ -135,26 +135,27 @@ a{color:inherit; text-decoration:none}
   position: relative;
   z-index: 4;
 
-  /* Transparent inside */
+  /* Transparent inside everywhere */
   color:transparent !important;
-  -webkit-text-fill-color:transparent !important;
 
-  /* Stroke slightly thicker for outside effect */
+  /* Chrome / Edge / Safari */
+  -webkit-text-fill-color:transparent !important;
   -webkit-text-stroke: calc(var(--stroke-name) + 1px) var(--black);
 
-  /* Shrink letters so stroke appears outside */
+  /* Nudge so more stroke reads outside */
   transform: scale(0.96) translate(var(--name-shift-x), var(--name-shift-y));
 
-  /* Firefox fallback: transparent middle with heavy shadow outline */
+  /* Firefox fallback: thin outline that won't flood the interior */
+  /* (Firefox ignores -webkit- properties) */
   text-shadow:
-    2px 0 0 #000,
-   -2px 0 0 #000,
-    0 2px 0 #000,
-    0 -2px 0 #000,
-    2px 2px 0 #000,
-   -2px -2px 0 #000,
-    2px -2px 0 #000,
-   -2px 2px 0 #000;
+     1px  0   0 #000,
+    -1px  0   0 #000,
+     0    1px 0 #000,
+     0   -1px 0 #000,
+     1px  1px 0 #000,
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000;
 }
 .name-outline span{display:block}
 
@@ -196,3 +197,4 @@ a{color:inherit; text-decoration:none}
   .header-grid{grid-template-columns:1fr 1fr; row-gap:12px}
   .homewordmark{grid-column:1 / -1; justify-self:start}
 }
+
