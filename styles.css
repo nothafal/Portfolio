@@ -33,21 +33,30 @@
   --ls-logo-adjusted:calc(var(--ls-logo) - 0.02em);
   --ls-name:6.4px;
 
-  --stroke-name:3px;
+  /* Stroke thickness for outlined name text */
+  --stroke-name:4.5px; /* Increased from 3px to 4.5px for 50% thicker outline */
 
   --container-max:1360px;
   --gap-3:32px; --gap-4:48px; --gap-5:64px;
 
-  /* Position controls */
+  /* ---------- Position controls ----------
+     Positive X moves right, negative X moves left
+     Positive Y moves down, negative Y moves up
+  */
+
+  /* Position of description text */
   --desc-shift-x: 0px;
   --desc-shift-y: 0px;
 
+  /* Position of photo */
   --photo-shift-x: 0px;
   --photo-rise-y: 20px;
 
-  --name-shift-x: -215px;
-  --name-shift-y: -29px;
+  /* Position of big name (outline heading) */
+  --name-shift-x: -215px; /* More negative = further left, more positive = further right */
+  --name-shift-y: -29px;  /* More negative = higher up, more positive = lower down */
 
+  /* Position of discipline text */
   --disc-shift-x: -30px;
   --disc-shift-y: 13px;
 }
@@ -162,7 +171,7 @@ h1.name-outline{
   h1.name-outline{
     text-shadow: none;
     -webkit-text-fill-color: transparent !important;
-    -webkit-text-stroke: var(--stroke-name) var(--black); /* no +1px, avoids inner fill look */
+    -webkit-text-stroke: var(--stroke-name) var(--black);
     color: transparent !important;
   }
 }
@@ -184,7 +193,7 @@ h1.name-outline{
 @media (max-width:1100px){
   :root{
     --fs-name:clamp(72px,10vw,140px);
-    --stroke-name:2.5px;
+    --stroke-name:3.75px; /* 50% thicker than old mobile value */
     --photo-shift-x:0px; --photo-rise-y:-60px;
     --desc-shift-x:0px;  --desc-shift-y:0px;
     --name-shift-x:0px;  --name-shift-y:0px;
@@ -196,7 +205,7 @@ h1.name-outline{
 @media (max-width:600px){
   :root{
     --fs-nav:16px; --fs-discipline:22px;
-    --stroke-name:2px;
+    --stroke-name:3px; /* 50% thicker than old smallest value */
     --photo-shift-x:0px; --photo-rise-y:0px;
     --desc-shift-x:0px;  --desc-shift-y:0px;
     --name-shift-x:0px;  --name-shift-y:0px;
@@ -205,4 +214,3 @@ h1.name-outline{
   .header-grid{grid-template-columns:1fr 1fr; row-gap:12px}
   .homewordmark{grid-column:1 / -1; justify-self:start}
 }
-
