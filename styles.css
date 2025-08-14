@@ -22,19 +22,18 @@
   --fs-name:160px;
   --fs-discipline:30px;
 
-  --lh-tight:1.11539;           /* 111.539% */
-  --ls-4pct:0.04em;             /* ~4% tracking */
-  --ls-logo:0.15em;             /* ~3px @ 20px for the logo */
-  --ls-name:6.4px;              /* big name tracking from Figma */
+  --lh-tight:1.11539;
+  --ls-4pct:0.04em;
+  --ls-logo:0.15em;
+  --ls-name:6.4px;
 
-  --stroke-name:3px;            /* thinner outline for big name */
+  --stroke-name:3px;
 
   --container-max:1360px;
   --gap-3:32px; --gap-4:48px; --gap-5:64px;
 
-  /* underlap tuning (photo under big name) */
-  --photo-shift-x:0px;          /* keep left aligned with paragraph */
-  --photo-rise-y:-140px;        /* negative = move up under the name */
+  --photo-shift-x:0px;
+  --photo-rise-y:-140px;
 }
 
 /* ------------ Base ------------ */
@@ -50,16 +49,15 @@ a{color:inherit; text-decoration:none}
 .container{max-width:var(--container-max); margin-inline:auto; padding-inline:24px}
 .section{padding-block:var(--gap-5)}
 
-/* ------------ Header (4 items evenly spaced) ------------ */
+/* ------------ Header ------------ */
 .site-header{padding-block:24px}
 .header-grid{
   display:grid; align-items:center;
-  grid-template-columns:repeat(4, 1fr);  /* logo | about | portfolio | contact */
+  grid-template-columns:repeat(4, 1fr);
 }
 .header-grid > *{justify-self:center}
-.homewordmark{justify-self:start}        /* keep logo on the far left */
+.homewordmark{justify-self:start}
 
-/* Logo = Tusker Bold, solid black, ~3px tracking */
 .homewordmark{
   font:700 var(--fs-nav)/var(--lh-tight) "Tusker Grotesk";
   letter-spacing:var(--ls-logo);
@@ -68,7 +66,6 @@ a{color:inherit; text-decoration:none}
 }
 .homewordmark span{display:block}
 
-/* Header links = Tusker Bold, solid black, 4% tracking */
 .header-link{
   font:700 var(--fs-nav)/var(--lh-tight) "Tusker Grotesk";
   letter-spacing:var(--ls-4pct);
@@ -81,55 +78,58 @@ a{color:inherit; text-decoration:none}
 .hero{padding-block:var(--gap-5)}
 .hero-grid{
   display:grid; gap:var(--gap-4); align-items:start;
-  grid-template-columns:560px 1fr;      /* wider left so the 514px photo fits cleanly */
+  grid-template-columns:560px 1fr;
 }
 
-/* Left column: body text + photo, left aligned together */
+/* Left column */
+.hero-left{ position: relative; }
 .desc{
   width:351px; margin:0 0 var(--gap-3) 0;
   font:400 20px/1.09 var(--font-body);
-  color:#000;                      /* filled body text */
+  color:#000;
+  position: relative;
+  z-index: 3; /* above the photo */
 }
 
-/* Photo: fixed 514x914 crop and underlap only with the big name */
+/* Photo — keep proportions, underlap the name */
 .hero-photo{
   width:514px;
-  height:914px;                    /* forces 9:16 crop regardless of source */
-  object-fit:cover;
-  object-position:center;
+  height:auto;                 /* keep natural aspect ratio */
+  display:block;
 
-  position:relative; z-index:1;    /* below the outlined name */
-  transform:translate(var(--photo-shift-x), var(--photo-rise-y));
+  position: relative;
+  z-index: 1;                   /* below big name */
+  transform: translate(var(--photo-shift-x), var(--photo-rise-y));
 }
 
-/* Big name: Tusker Super, outline-only, never filled */
+/* Big name — true outline */
 .name-outline{
   max-width:927px;
-  margin:0 0 40px 0;               /* extra space above discipline text */
+  margin:0 0 40px 0;
   font:800 var(--fs-name)/var(--lh-tight) "Tusker Grotesk";
   letter-spacing:var(--ls-name);
   text-transform:uppercase;
 
-  position:relative; z-index:2;    /* above the photo */
+  position: relative;
+  z-index: 2; /* above photo */
 
-  /* FORCE transparent fill on all browsers */
   color:transparent !important;
-  background:none !important;
   -webkit-text-fill-color:transparent !important;
   -webkit-text-stroke:var(--stroke-name) var(--black);
-  /* Firefox-ish fallback outline */
   text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000;
 }
 .name-outline span{display:block}
 
-/* Discipline = Tusker Bold, solid black, not behind the photo */
+/* Discipline — above the image */
 .discipline{
-  width:min(583px,100%); margin:0;
+  width:min(583px,100%);
+  margin:0;
   font:700 var(--fs-discipline)/var(--lh-tight) "Tusker Grotesk";
   letter-spacing:var(--ls-4pct);
   text-transform:uppercase;
   color:#000;
-  position:relative; z-index:3;    /* always above the image */
+  position: relative;
+  z-index: 3;
 }
 
 /* ------------ Responsive ------------ */
@@ -140,7 +140,10 @@ a{color:inherit; text-decoration:none}
     --photo-shift-x:0px; --photo-rise-y:-60px;
   }
   .hero-grid{grid-template-columns:1fr}
-  .hero-photo{width:min(420px,90vw); height:auto; aspect-ratio:9/16}
+  .hero-photo{
+    width:min(420px,90vw);
+    height:auto;
+  }
 }
 @media (max-width:600px){
   :root{
@@ -150,4 +153,7 @@ a{color:inherit; text-decoration:none}
   }
   .header-grid{grid-template-columns:1fr 1fr; row-gap:12px}
   .homewordmark{grid-column:1 / -1; justify-self:start}
+  .hero-photo{
+    transform: translate(0,0); /* no overlap on tiny screens */
+  }
 }
