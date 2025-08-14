@@ -45,11 +45,11 @@
   --photo-shift-x: 0px;
   --photo-rise-y: 20px;
 
-  --name-shift-x: -210px;
+  --name-shift-x: -215px;
   --name-shift-y: -29px;
 
   --disc-shift-x: -30px;
-  --disc-shift-y: 8px;
+  --disc-shift-y: 13px;
 }
 
 /* ------------ Base ------------ */
@@ -205,3 +205,4 @@ h1.name-outline{
   .header-grid{grid-template-columns:1fr 1fr; row-gap:12px}
   .homewordmark{grid-column:1 / -1; justify-self:start}
 }
+
