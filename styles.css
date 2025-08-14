@@ -39,11 +39,11 @@
 
   /* EDIT HERE: move the PHOTO (over/underlap amount) */
   --photo-shift-x: 0px;  /* + right, - left  */
-  --photo-rise-y: 40px;/* + down,  - up    */
+  --photo-rise-y: 20px;/* + down,  - up    */
 
   /* EDIT HERE: move the BIG NAME (Alyssa Chanyanut Nothaft) */
-  --name-shift-x: -180px;   /* + right, - left  */
-  --name-shift-y: 0px;   /* + down,  - up    */
+  --name-shift-x: -200px;   /* + right, - left  */
+  --name-shift-y: 30px;   /* + down,  - up    */
 
   /* EDIT HERE: move “Information design / Creative design” */
   --disc-shift-x: -30px;   /* + right, - left  */
@@ -185,6 +185,7 @@ a{color:inherit; text-decoration:none}
   .header-grid{grid-template-columns:1fr 1fr; row-gap:12px}
   .homewordmark{grid-column:1 / -1; justify-self:start}
 }
+
 
 
 
