@@ -47,7 +47,7 @@
 
   /* EDIT HERE: move “Information design / Creative design” */
   --disc-shift-x: -30px;   /* + right, - left  */
-  --disc-shift-y: 23px;   /* + down,  - up    */
+  --disc-shift-y: 8px;   /* + down,  - up    */
   /* ============================================================= */
 }
 
@@ -185,6 +185,7 @@ a{color:inherit; text-decoration:none}
   .header-grid{grid-template-columns:1fr 1fr; row-gap:12px}
   .homewordmark{grid-column:1 / -1; justify-self:start}
 }
+
 
 
 
