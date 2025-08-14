@@ -320,3 +320,34 @@ h1.name-outline{
   .header-grid{ grid-template-columns:repeat(4, 1fr); row-gap:12px }
   .homewordmark{ justify-self:center }
 }
+
+/* === MMK: align side facts with the right column of images === */
+:root{
+  --project-header-row-gap: 24px;  /* space between title and body/side facts */
+  --project-columns-gap: 32px;     /* should match .project-gallery gap */
+  --project-note-max: 240px;       /* limit width of side facts block */
+}
+
+.project-header{
+  display: grid;
+  grid-template-columns: 1fr 1fr;                 /* match gallery columns */
+  column-gap: var(--project-columns-gap);
+  row-gap: var(--project-header-row-gap);
+  align-items: start;
+  margin-bottom: 24px;
+}
+.project-title{ grid-column: 1 / -1; }            /* title across both columns */
+.project-lede{
+  grid-column: 1;                                  /* left column */
+  max-width: 630px;                                /* your figma width */
+  font: 400 20px/1.09 var(--font-body);
+  color: #000;
+}
+.project-note{
+  grid-column: 2;                                  /* right column — aligns with right images */
+  justify-self: start;                             /* align to column's left edge */
+  text-align: left;                                /* rag-left so it visually aligns with images */
+  max-width: var(--project-note-max);
+  font: italic 16px/1.4 var(--font-body);
+  color: #000;
+}
