@@ -504,6 +504,16 @@ h1.name-outline{
   height: 28px;                        /* bigger glyph, same 48x48 button */
 }
 
+/* --- Hover-Zoom für Icon-Buttons (LinkedIn + Submit) --- */
+.icon-btn {
+  transition: transform 0.25s ease;
+}
+
+.icon-btn:hover,
+.icon-btn:focus {
+  transform: scale(1.15);   /* leichtes Zoomen */
+}
+
 
 
 
