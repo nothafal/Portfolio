@@ -532,17 +532,9 @@ main {
   margin-top: auto;  /* schiebt Footer ans Ende */
   font: 400 var(--fs-body)/var(--lh-tight) var(--font-body);
 }
-/* --- Gleichmäßiger Footer-Abstand auf Portfolio- & Unterseiten --- */
 
-/* Standard-Inhaltshöhe für main-Bereiche */
-main {
-  padding-bottom: var(--gap-5);  /* z. B. 64px – passt gut auch auf Portfolio/Hero/etc. */
 }
 
-/* Zusätzlicher extra Abstand auf Portfolio-Seiten, wenn nötig */
-body[class*="portfolio"] main {
-  padding-bottom: calc(var(--gap-5) * 1.5); /* 1,5× Abstand z. B. ~96px */
-}
 
 
 
