@@ -355,4 +355,18 @@ h1.name-outline{
   text-transform: uppercase;
   color: #000;
 }
+/* ------------ Footer ------------ */
+.site-footer {
+  border-top: 2px solid var(--black); /* Linie oben */
+  padding: 16px 0;
+  margin-top: 48px;
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+
+.footer-grid {
+  display: flex;
+  gap: 32px; /* Abstand zwischen Impressum & Datenschutz */
+}
+
 
