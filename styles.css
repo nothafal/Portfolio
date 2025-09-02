@@ -356,17 +356,28 @@ h1.name-outline{
   color: #000;
 }
 /* ------------ Footer ------------ */
-.site-footer {
-  border-top: 2px solid var(--black); /* Linie oben */
+.site-footer{
+  border-top: 2px solid var(--black);
   padding: 16px 0;
   margin-top: 48px;
-  font-family: var(--font-body);
-  font-size: 16px;
+
+  /* Roboto Regular 20px */
+  font: 400 var(--fs-body)/var(--lh-tight) var(--font-body);
 }
 
-.footer-grid {
+.footer-grid{
   display: flex;
-  gap: 32px; /* Abstand zwischen Impressum & Datenschutz */
+  gap: 32px;                /* Abstand zwischen Links */
 }
+
+.site-footer a{
+  text-decoration: none;    /* wie im Screenshot */
+}
+
+.site-footer a:hover{
+  opacity: .85;
+}
+
+
 
 
