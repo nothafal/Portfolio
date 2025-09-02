@@ -409,6 +409,71 @@ h1.name-outline{
 }
 .site-footer a:hover{ opacity:.85 }
 
+/* ------------ Contact page layout ------------ */
+.contact-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;             /* links Text, rechts Formular */
+  column-gap: var(--project-columns-gap);
+  align-items: start;
+}
+
+/* linke Spalte: gleiche Textbreite wie About */
+.contact-left{ max-width: var(--about-text-w); }
+.contact-intro p{ margin: 0 0 16px 0; }
+
+/* 48×48 runde Icon-Buttons (LinkedIn + Submit) */
+.icon-btn{
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  width: 48px; height: 48px;
+  border-radius: 10px;              /* schön abgerundet */
+  background: var(--black);
+  color: var(--white);
+  margin-top: 16px;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+.icon-btn:hover{ opacity: .9 }
+
+/* rechte Spalte: Formular bis zur Mitte → volle Breite der rechten Spalte */
+.contact-right{ width: 100%; }
+
+/* Labels im Tusker 5700 Bold (wie kleine Headlines) */
+.form-label{
+  display: block;
+  margin: 24px 0 8px 0;
+  font: 700 30px/var(--lh-tight) "Tusker Grotesk";
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+/* Felder: 40px / 160px, 2px Border, Roboto 20px, 50% schwarze Placeholder */
+.form-input,
+.form-textarea{
+  width: 100%;
+  border: 2px solid var(--black);
+  font: 400 var(--fs-body)/1.1 var(--font-body);
+  color: var(--black);
+  padding: 8px 12px;
+  background: #fff;
+}
+.form-input{ height: 40px; }
+.form-textarea{ height: 160px; resize: vertical; min-height: 160px; }
+
+.form-input::placeholder,
+.form-textarea::placeholder{ color: rgba(0,0,0,.5); }
+
+/* Abstand zum Submit-Icon */
+.contact-form .icon-btn{ margin-top: 16px; }
+
+/* Responsive: auf Mobile eine Spalte, Felder volle Breite */
+@media (max-width: 900px){
+  .contact-grid{ grid-template-columns: 1fr; row-gap: 32px; }
+  .contact-left{ max-width: 600px; }    /* angenehme Lesebreite */
+  .contact-right{ width: 100%; }
+}
+
 
 
 
