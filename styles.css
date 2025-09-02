@@ -378,6 +378,37 @@ h1.name-outline{
   opacity: .85;
 }
 
+/* ------------ Legal pages (Impressum/Datenschutz) ------------ */
+.legal-page { /* nur ein Hook für evtl. spätere Anpassungen */ }
+
+.legal-content{
+  /* Roboto Regular 20px – du nutzt das schon global,
+     aber hier fixen wir die Breite + Fluss */
+  width: 50%;          /* ~ halbe Seite auf Desktop */
+  max-width: 680px;    /* gute Leselänge */
+  text-align: left;
+}
+
+@media (max-width: 900px){
+  .legal-content{
+    width: 100%;       /* auf Mobile volle Breite */
+    max-width: none;
+  }
+}
+
+/* Footer (falls noch nicht gesetzt) */
+.site-footer{
+  border-top: 2px solid var(--black);
+  padding: 16px 0;
+  margin-top: 48px;
+  font: 400 var(--fs-body)/var(--lh-tight) var(--font-body); /* Roboto 20px */
+}
+.footer-grid{
+  display: flex;
+  gap: 32px;
+}
+.site-footer a:hover{ opacity:.85 }
+
 
 
 
