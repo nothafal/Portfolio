@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Alyssa Chanyanut Nothaft</title>
+  <meta name="description" content="Contact page for Alyssa Chanyanut Nothaft.">
+
+  <!-- Fonts + CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/TuskerGrotesk-5800Super.woff2?v=11" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/TuskerGrotesk-5700Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css?v=40">
+</head>
+<body id="top">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-grid">
+      <a class="homewordmark" href="/" aria-label="Home">
+        <span>Alyssa</span><span>Chanyanut</span><span>Nothaft</span>
+      </a>
+      <a class="header-link" href="/about/">About Me</a>
+      <a class="header-link" href="/portfolio/">Portfolio</a>
+      <a class="header-link" href="/contact/" aria-current="page">Contact me</a>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="section container contact-page">
+    <div class="contact-grid">
+
+      <!-- Left: Intro text + LinkedIn -->
+      <section class="contact-left">
+        <h1 class="about-headline">Contact me</h1>
+
+        <div class="about-body contact-intro">
+          <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.Lorem ipsum dolor sit
+            amet, consectetuer adipiscing elit.</p>
+        </div>
+
+        <!-- 48×48 rounded LinkedIn icon -->
+        <a class="icon-btn" href="https://www.linkedin.com/in/DEIN-LINKEDIN-SLUG" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <!-- LinkedIn SVG (weiß auf schwarz) -->
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+            <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.447-2.136 2.944v5.662H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.852 3.368-1.852 3.602 0 4.266 2.372 4.266 5.456v6.287zM5.337 7.433a2.064 2.064 0 1 1 0-4.129 2.064 2.064 0 0 1 0 4.129zM7.114 20.452H3.558V9h3.556v11.452z"/>
+          </svg>
+        </a>
+      </section>
+
+      <!-- Right: Form -->
+      <section class="contact-right">
+        <!-- FORM HANDLING:
+             1) Schnell & ohne eigenes Backend: Formspree (empfohlen):
+                action="https://formspree.io/f/DEIN_FORM_ID"  method="POST"
+             2) Als Fallback: mailto (öffnet E-Mail-Programm)
+        -->
+        <form class="contact-form" action="https://formspree.io/f/DEIN_FORM_ID" method="POST">
+          <!-- Labels im Tusker-Stil -->
+          <label class="form-label" for="name">Name</label>
+          <input class="form-input" id="name" name="name" type="text" placeholder="Your Name" required>
+
+          <label class="form-label" for="email">E-Mail adress</label>
+          <input class="form-input" id="email" name="email" type="email" placeholder="Your E-Mail adress" required>
+
+          <label class="form-label" for="message">Message</label>
+          <textarea class="form-textarea" id="message" name="message" placeholder=":)" required></textarea>
+
+          <!-- 48×48 rounded submit with paper plane -->
+          <button class="icon-btn" type="submit" aria-label="Send message">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+              <path fill="currentColor" d="M2.01 21l20-9L2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+          </button>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <a href="/impressum/">Impressum</a>
+      <a href="/datenschutz/">Datenschutz</a>
+    </div>
+  </footer>
+</body>
+</html>
