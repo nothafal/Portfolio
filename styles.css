@@ -473,6 +473,37 @@ h1.name-outline{
   .contact-left{ max-width: 600px; }    /* angenehme Lesebreite */
   .contact-right{ width: 100%; }
 }
+/* --- CONTACT PAGE POLISH --- */
+
+/* 1) Labels: same font as header links (Tusker), uppercase */
+.form-label{
+  display:block;
+  margin: 28px 0 12px 0;              /* more space to the field */
+  font-family: "Tusker Grotesk", sans-serif;
+  font-weight: 500;                    /* matches .header-link (500) */
+  font-size: var(--fs-nav);            /* 20px like header */
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-4pct);
+  text-transform: uppercase;
+}
+
+/* 2) More air between fields as well */
+.form-input,
+.form-textarea{
+  margin-bottom: 18px;                 /* extra spacing below each field */
+}
+
+/* 3) Form top aligns with the "Contact me" headline on the left */
+.contact-grid{ align-items: start; }
+.contact-right{ margin-top: 0; padding-top: 6px; }
+/* tweak the padding-top (e.g. 0–12px) until the first label visually lines up with the headline cap height */
+
+/* 4) Bigger icon inside the 48x48 square buttons (LinkedIn + submit) */
+.icon-btn svg{
+  width: 28px;
+  height: 28px;                        /* bigger glyph, same 48x48 button */
+}
+
 
 
 
