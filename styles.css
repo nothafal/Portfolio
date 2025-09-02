@@ -532,8 +532,68 @@ main {
   margin-top: auto;  /* schiebt Footer ans Ende */
   font: 400 var(--fs-body)/var(--lh-tight) var(--font-body);
 }
+/* --- Fix Contact Page Layout --- */
 
+/* Grid: linke Spalte bleibt schmal, rechte nimmt den Rest bis zum Rand */
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, var(--about-text-w)) 1fr; 
+  column-gap: var(--project-columns-gap);
+  align-items: start;
 }
+
+/* Linker Textblock linksbündig */
+.contact-left {
+  max-width: var(--about-text-w);
+  text-align: left;
+}
+
+/* Rechte Spalte nimmt volle Breite bis zum rechten Rand */
+.contact-right {
+  width: 100%;
+  justify-self: stretch; /* füllt die rechte Spalte */
+}
+
+/* Felder im Formular über gesamte rechte Spalte */
+.form-input,
+.form-textarea {
+  width: 100%;
+}
+
+/* Erste Zeile ausrichten: Name Label = Contact Me Headline */
+.contact-grid {
+  align-items: start;
+}
+.contact-left .about-headline,
+.contact-left h2, /* falls h2 für Contact Me */
+.contact-right .form-label:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* === CONTACT PAGE MOBILE LAYOUT === */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;   /* nur noch eine Spalte */
+    row-gap: 32px;                /* Abstand zwischen Text und Formular */
+  }
+
+  .contact-left {
+    max-width: 100%;              /* nicht mehr schmal begrenzt */
+    text-align: left;
+  }
+
+  .contact-right {
+    width: 100%;                  /* Formular nimmt die volle Breite */
+    justify-self: stretch;
+  }
+
+  .form-input,
+  .form-textarea {
+    width: 100%;                  /* Felder füllen die ganze Breite */
+  }
+}
+
 
 
 
