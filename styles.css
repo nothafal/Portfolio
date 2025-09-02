@@ -594,6 +594,89 @@ main {
   }
 }
 
+/* === Kontaktseite: 2 Spalten Desktop / 1 Spalte Mobile === */
+/* Wir erkennen die Kontaktseite daran, dass im <main> ein <form> steht. */
+body:has(main form) .container {
+  display: grid;
+  grid-template-columns: minmax(0, var(--about-text-w)) 1fr; /* links Text fix, rechts flexibel */
+  column-gap: var(--project-columns-gap);
+  align-items: start;
+}
+
+/* Linke Spalte: alles Textliche linksbündig */
+body:has(main form) h1,
+body:has(main form) p,
+body:has(main form) a[href*="linkedin"] {
+  grid-column: 1;
+  text-align: left;
+  max-width: var(--about-text-w);
+}
+
+/* Rechte Spalte: Formular von der Mitte bis ganz rechts */
+body:has(main form) form {
+  grid-column: 2;
+  width: 100%;
+  justify-self: stretch;   /* füllt die rechte Spalte */
+  padding-top: 6px;        /* sorgt dafür, dass "Name" auf Höhe von "Contact me" startet */
+}
+
+/* Formularfelder: volle Breite, saubere Typo */
+body:has(main form) input[type="text"],
+body:has(main form) input[type="email"],
+body:has(main form) textarea {
+  width: 100%;
+  border: 2px solid var(--black);
+  font: 400 var(--fs-body)/1.1 var(--font-body);
+  padding: 8px 12px;
+  background: #fff;
+  color: var(--black);
+  display: block;
+  box-sizing: border-box;
+}
+
+body:has(main form) input[type="text"],
+body:has(main form) input[type="email"] { height: 40px; }
+
+body:has(main form) textarea {
+  height: 160px;
+  min-height: 160px;
+  resize: vertical;
+}
+
+body:has(main form) input::placeholder,
+body:has(main form) textarea::placeholder {
+  color: rgba(0,0,0,.5);
+}
+
+/* Labels wie im Design (Tusker, uppercase) */
+body:has(main form) label {
+  display: block;
+  margin: 28px 0 12px 0;
+  font-family: "Tusker Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: var(--fs-nav);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-4pct);
+  text-transform: uppercase;
+}
+
+/* Mobile: Text oben, darunter Formular über die ganze Breite */
+@media (max-width: 900px){
+  body:has(main form) .container {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+  }
+  body:has(main form) h1,
+  body:has(main form) p,
+  body:has(main form) a[href*="linkedin"],
+  body:has(main form) form {
+    grid-column: 1;
+    max-width: 100%;
+    justify-self: stretch;
+  }
+  body:has(main form) form { padding-top: 0; } /* auf Mobile kein Ausgleich nötig */
+}
+
 
 
 
