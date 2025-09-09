@@ -514,42 +514,7 @@ h1.name-outline{
   transform: scale(1.15);   /* leichtes Zoomen */
 }
 
-/* Footer */
-.site-footer {
-  border-top: 2px solid var(--black);
-  padding: 16px 0;
-  margin-top: 48px; /* Abstand nach oben, damit der Footer immer am unteren Rand bleibt */
-  font: 400 var(--fs-body)/var(--lh-tight) var(--font-body); /* Roboto 20px */
-  position: relative;
-  width: 100%;
-  bottom: 0;  /* Damit der Footer immer am unteren Rand der Seite bleibt */
-}
 
-/* Footer Grid Layout */
-.footer-grid {
-  display: flex;
-  justify-content: space-between;
-  gap: 32px; /* Abstand zwischen Links */
-  align-items: center;
-  flex-wrap: wrap;  /* Damit es auf kleineren Bildschirmen ordentlich aussieht */
-}
-
-/* Links im Footer */
-.site-footer a {
-  text-decoration: none;  /* Keine Unterstreichung */
-  font-weight: 500;  /* Passt das Gewicht der Links an */
-}
-
-.site-footer a:hover {
-  opacity: .85;  /* Hover-Effekt */
-}
-
-/* Horizontale Linie im Footer */
-.site-footer hr {
-  margin: 0;
-  border: none;
-  border-top: 1px solid #ccc; /* Stil der Linie */
-}
 
 
 
