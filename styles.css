@@ -514,21 +514,11 @@ h1.name-outline{
   transform: scale(1.15);   /* leichtes Zoomen */
 }
 
-/* ------------ Footer fixieren (Contact page) ------------ */
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
-  flex: 1;
-}
-
-/* Footer */
 .site-footer {
-  margin-top: auto; /* Push footer to the bottom */
+  margin-top: 100px; /* Passt den Abstand nach oben an */
 }
+
+
 
 
 
