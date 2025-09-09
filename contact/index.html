@@ -53,38 +53,34 @@
 
       <!-- Right: Form -->
       <section class="contact-right">
-        <!-- FORM HANDLING:
-             1) Schnell & ohne eigenes Backend: Formspree (empfohlen):
-                action="https://formspree.io/f/DEIN_FORM_ID"  method="POST"
-             2) Als Fallback: mailto (öffnet E-Mail-Programm)
-        -->
+        <!-- FORM HANDLING: -->
         <form class="contact-form" action="https://form.taxi/s/xgiwggd1" method="POST" accept-charset="UTF-8">
-  <!-- Sichtbare Felder -->
-  <label class="form-label" for="name">Name</label>
-  <input class="form-input" id="name" name="name" type="text" placeholder="Your Name" required>
+          <!-- Sichtbare Felder -->
+          <label class="form-label" for="name">Name</label>
+          <input class="form-input" id="name" name="name" type="text" placeholder="Your Name" required>
 
-  <label class="form-label" for="email">E-Mail address</label>
-  <input class="form-input" id="email" name="email" type="email" placeholder="Your E-Mail address" required>
+          <label class="form-label" for="email">E-Mail address</label>
+          <input class="form-input" id="email" name="email" type="email" placeholder="Your E-Mail address" required>
 
-  <label class="form-label" for="message">Message</label>
-  <textarea class="form-textarea" id="message" name="message" placeholder=":)" required></textarea>
+          <label class="form-label" for="message">Message</label>
+          <textarea class="form-textarea" id="message" name="message" placeholder=":)" required></textarea>
 
-  <!-- Hidden: Betreff, Redirect, Sprache -->
-  <input type="hidden" name="_subject" value="Neue Nachricht von alyssanothaft.de">
-  <input type="hidden" name="_next" value="https://alyssanothaft.de/erfolg/">
-  <input type="hidden" name="_lang" value="en"> <!-- oder 'de', wie du willst -->
+          <!-- Hidden: Betreff, Redirect, Sprache -->
+          <input type="hidden" name="_subject" value="Neue Nachricht von alyssanothaft.de">
+          <input type="hidden" name="_next" value="https://alyssanothaft.de/erfolg/">
+          <input type="hidden" name="_lang" value="en"> <!-- oder 'de', wie du willst -->
 
-  <!-- Honeypot (Namen HIER an den im Dashboard angezeigten Namen anpassen!) -->
-  <input type="text" name="_gotcha" value="" tabindex="-1" autocomplete="off" aria-hidden="true"
-         style="position:absolute; left:-10000px; opacity:0; height:0; width:0;">
+          <!-- Honeypot (Namen HIER an den im Dashboard angezeigten Namen anpassen!) -->
+          <input type="text" name="_gotcha" value="" tabindex="-1" autocomplete="off" aria-hidden="true"
+             style="position:absolute; left:-10000px; opacity:0; height:0; width:0;">
 
-  <!-- Submit (48×48, Papierflieger) -->
-  <button class="icon-btn" type="submit" aria-label="Send message">
-    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-      <path fill="currentColor" d="M2.01 21l20-9L2.01 3 2 10l15 2-15 2z"/>
-    </svg>
-  </button>
-</form>
+          <!-- Submit (48×48, Papierflieger) -->
+          <button class="icon-btn" type="submit" aria-label="Send message">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+              <path fill="currentColor" d="M2.01 21l20-9L2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+          </button>
+        </form>
       </section>
 
     </div>
@@ -92,6 +88,7 @@
 
   <!-- Footer -->
   <footer class="site-footer">
+    <hr> <!-- Horizontale Linie hinzufügen -->
     <div class="container footer-grid">
       <a href="/impressum/">Impressum</a>
       <a href="/datenschutz/">Datenschutz</a>
