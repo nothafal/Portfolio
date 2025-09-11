@@ -1,1 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Der Spiegel – Portfolio – Alyssa Chanyanut Nothaft</title>
+  <meta name="description" content="Project details for Der Spiegel">
+
+  <!-- Body font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+  <!-- Preload display font -->
+  <link rel="preload" href="../../fonts/TuskerGrotesk-5700Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Global styles -->
+  <link rel="stylesheet" href="../../styles.css?v=44">
+
+  <!-- Page-specific layout for Spiegel gallery -->
+  <style>
+    /* Zwei spezielle Reihen mit angepassten Spaltenbreiten */
+    .sp-row{ display:grid; column-gap:var(--project-columns-gap); align-items:start; margin:0 0 var(--project-columns-gap) 0; }
+    /* Row 1: links zwei gleich breite kleine, rechts ein halbes Breiten-Item */
+    .sp-row--1{ grid-template-columns: 1fr 1fr 2fr; }
+    /* Row 2: links das halbe Breiten-Item, rechts ein kleines Bild rechtsbündig */
+    .sp-row--2{ grid-template-columns: 2fr 1fr; }
+    .sp-row figure{ margin:0 }
+    .sp-row img{ width:100%; height:auto; display:block }
+    /* Rechtsbündige Ausrichtung für Bild 7 */
+    .sp-align-right{ justify-self:end }
+
+    /* Mobil: je Reihe untereinander */
+    @media (max-width: 900px){
+      .sp-row--1, .sp-row--2{ grid-template-columns:1fr }
+      .sp-align-right{ justify-self:start }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-grid">
+      <a class="homewordmark" href="../../" aria-label="Home">
+        <span>Alyssa</span><span>Chanyanut</span><span>Nothaft</span>
+      </a>
+      <a class="header-link" href="../../about/">About Me</a>
+      <a class="header-link" href="../../portfolio/" aria-current="page">Portfolio</a>
+      <a class="header-link" href="/contact/">Contact me</a>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+
+      <!-- Header-Bereich -->
+      <div class="project-header">
+        <h1 class="project-title">DER SPIEGEL</h1>
+
+        <div class="project-lede">
+          <p>Kurzer Intro-Text zum Projekt. Du kannst hier Kontext, Ziel und Rolle beschreiben – wie bei den anderen Detailseiten.</p>
+        </div>
+
+        <aside class="project-note">Side facts in cursive</aside>
+      </div>
+
+      <!-- HERO #1 -->
+      <figure class="project-hero zoom">
+        <img class="project-hero-img" src="./images/spiegel-gallery-1.png" alt="DER SPIEGEL – Hero 1">
+      </figure>
+
+      <!-- ROW 1 (kleine Bilder): 2, 3 links; 4 von rechts bis Mitte -->
+      <div class="sp-row sp-row--1">
+        <figure class="zoom"><img src="./images/spiegel-gallery-2.png" alt="Spiegel Galerie 2"></figure>
+        <figure class="zoom"><img src="./images/spiegel-gallery-3.png" alt="Spiegel Galerie 3"></figure>
+        <figure class="zoom"><img src="./images/spiegel-gallery-4.png" alt="Spiegel Galerie 4 (rechte Hälfte)"></figure>
+      </div>
+
+      <!-- ROW 2 (kleine Bilder): 6 von links bis Mitte; 7 rechtsbündig -->
+      <div class="sp-row sp-row--2">
+        <figure class="zoom"><img src="./images/spiegel-gallery-6.png" alt="Spiegel Galerie 6 (linke Hälfte)"></figure>
+        <figure class="zoom sp-align-right"><img src="./images/spiegel-gallery-7.jpg" alt="Spiegel Galerie 7 rechts"></figure>
+      </div>
+
+      <!-- HERO #2 -->
+      <figure class="project-hero zoom">
+        <img class="project-hero-img" src="./images/spiegel-gallery-8.png" alt="DER SPIEGEL – Hero 2">
+      </figure>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <a href="/impressum/">Impressum</a>
+      <a href="/datenschutz/">Datenschutz</a>
+    </div>
+  </footer>
+
+</body>
+</html>
 
