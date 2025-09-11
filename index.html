@@ -9,10 +9,9 @@
   <!-- Body font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
 
-  <!-- Preload big-name font -->
+  <!-- Preload big-name font (kann bleiben, auch wenn der Name jetzt ein SVG ist) -->
   <link rel="preload" href="./fonts/TuskerGrotesk-5800Super.woff2?v=11" as="font" type="font/woff2" crossorigin>
-
-<!-- Preload Subhead font -->
+  <!-- Preload Subhead font -->
   <link rel="preload" href="./fonts/TuskerGrotesk-5700Bold.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Stylesheet (cache-busted) -->
@@ -48,11 +47,13 @@
       </div>
 
       <div class="hero-right">
-        <h1 class="name-outline">
-          <span>Alyssa</span>
-          <span>Chanyanut</span>
-          <span>Nothaft</span>
-        </h1>
+        <!-- SEO & Accessibility: H1 bleibt semantisch, aber unsichtbar -->
+        <h1 class="sr-only">Alyssa Chanyanut Nothaft</h1>
+
+        <!-- Sichtbarer Name als SVG, gleiche Größe/Position wie vorher -->
+        <figure class="name-svg" role="img" aria-label="Alyssa Chanyanut Nothaft">
+          <img class="name-svg-img" src="./images/index/name.svg" alt="Alyssa Chanyanut Nothaft">
+        </figure>
 
         <p class="discipline">
           Information design<br>
@@ -65,30 +66,13 @@
   <section id="about" class="section container"></section>
   <section id="portfolio" class="section container"></section>
   <section id="contact" class="section container"></section>
+
   <!-- Footer -->
   <footer class="site-footer">
-  <div class="container footer-grid">
-    <a href="/impressum/">Impressum</a>
-    <a href="/datenschutz/">Datenschutz</a>
-  </div>
-</footer>
+    <div class="container footer-grid">
+      <a href="/impressum/">Impressum</a>
+      <a href="/datenschutz/">Datenschutz</a>
+    </div>
+  </footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
