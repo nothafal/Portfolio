@@ -58,6 +58,9 @@
   --project-columns-gap:32px;    /* keep in sync with .project-gallery gap */
   --project-header-row-gap:28px; /* space between title and body/side facts */
   --project-note-max:240px;      /* max width of side facts (optional) */
+
+  /* MMK side-facts fine nudge */
+  --project-note-top:10px;
 }
 
 /* ------------ Base ------------ */
@@ -73,20 +76,17 @@ a{color:inherit; text-decoration:none}
 .container{max-width:var(--container-max); margin-inline:auto; padding-inline:24px}
 .section{padding-block:var(--gap-5)}
 
-/* ------------ Header (4 even columns) ------------ */
+/* ------------ Header (4 even columns → Flex) ------------ */
 .site-header{ padding-block:24px; }
 .header-grid{
-  display:grid; align-items:center;
-  grid-template-columns:repeat(4, 1fr);
-  gap:24px;
+  display:flex; align-items:center; justify-content:space-between; gap:0;
+  flex-wrap:nowrap;
 }
-.header-grid > *{ justify-self:center }
 .homewordmark{
   font:700 var(--fs-nav)/var(--lh-tight) "Tusker Grotesk";
   letter-spacing:var(--ls-logo-adjusted);
   text-transform:uppercase;
   color:var(--black);
-  justify-self:start; /* align with hero left edge */
 }
 .homewordmark span{ display:block }
 .header-link{
@@ -113,8 +113,11 @@ a{color:inherit; text-decoration:none}
     color:transparent;
   }
 }
-/* Contact link pinned flush right (site-wide) */
-.header-grid > .header-link:last-child{ justify-self:end }
+/* mobile header */
+@media (max-width:600px){
+  .header-grid{ flex-wrap:wrap; row-gap:12px }
+  .homewordmark{ width:100% } /* Logo eigene Zeile */
+}
 
 /* ------------ Hero (home) ------------ */
 .hero{ padding-block:var(--gap-5) }
@@ -139,11 +142,9 @@ a{color:inherit; text-decoration:none}
 h1.name-outline{
   max-width:927px; margin:0 0 40px 0;
   font:800 var(--fs-name)/var(--lh-tight) "Tusker Grotesk";
-  letter-spacing:var(--ls-name); text-transform:uppercase;
+  letter-spacing:var(--ls-name); text-transform:uppercase; color:transparent !important;
   position:relative; z-index:4;
-  color:transparent !important;
   transform:translate(var(--name-shift-x), var(--name-shift-y));
-  /* Firefox fallback outline */
   text-shadow:
      1px  0   0 #000, -1px  0   0 #000,
      0    1px 0 #000,  0   -1px 0 #000,
@@ -193,9 +194,7 @@ h1.name-outline{
 }
 .work{ margin:0 }
 .work-card{ display:grid; gap:var(--portfolio-title-gap); text-decoration:none; outline:none }
-.work-thumb{
-  width:100%; aspect-ratio:1/1; overflow:hidden; display:block;
-}
+.work-thumb{ width:100%; aspect-ratio:1/1; overflow:hidden; display:block }
 .work-thumb img{
   width:100%; height:100%; object-fit:cover;
   transform:scale(1); transition:transform 300ms ease; display:block;
@@ -208,11 +207,11 @@ h1.name-outline{
   .work-thumb img{ transition:none }
 }
 
-/* ------------ Project detail (wireframe) ------------ */
-/* Title spans both; body + side facts top-aligned; right column flush right */
+/* ------------ Project detail ------------ */
+/* Header: zwei Spalten (wie Galerie), top-aligned */
 .project-header{
   display:grid;
-  grid-template-columns:1fr 1fr; /* match gallery */
+  grid-template-columns:1fr 1fr;
   column-gap:var(--project-columns-gap);
   row-gap:var(--project-header-row-gap);
   align-items:start;
@@ -225,7 +224,6 @@ h1.name-outline{
   font:400 20px/1.09 var(--font-body);
   color:#000;
 }
-/* optional outline body copy (WebKit only) – add class="project-lede outline" */
 .project-lede.outline p{
   -webkit-text-fill-color:transparent;
   -webkit-text-stroke:5px #000;
@@ -233,9 +231,10 @@ h1.name-outline{
 }
 .project-note{
   grid-column:2; align-self:start;
-  justify-self:end; text-align:right;  /* flush right edge */
+  justify-self:end; text-align:right;
   max-width:var(--project-note-max);
   font:italic 16px/1.4 var(--font-body); color:#000;
+  margin-top:var(--project-note-top);
 }
 
 /* Heroes + gallery */
@@ -244,7 +243,7 @@ h1.name-outline{
 .project-gallery{
   display:grid; grid-template-columns:1fr 1fr; gap:var(--project-columns-gap);
 }
-.project-gallery figure{ margin:0 }   /* ensure span-2 is full width */
+.project-gallery figure{ margin:0 }
 .project-gallery .span-2{ grid-column:1 / -1 }
 .project-gallery .square{ aspect-ratio:1/1; overflow:hidden }
 .project-gallery .square img{ width:100%; height:100%; object-fit:cover }
@@ -257,6 +256,47 @@ h1.name-outline{
 }
 @media (prefers-reduced-motion:reduce){
   .zoom img{ transition:none }
+}
+
+/* ------------ Contact page layout ------------ */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  column-gap:var(--project-columns-gap);
+  align-items:start;
+}
+.contact-left{ max-width:var(--about-text-w) }
+.contact-intro p{ margin:0 0 16px 0 }
+.icon-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:48px; height:48px;
+  border-radius:10px; background:var(--black); color:var(--white);
+  margin-top:16px; border:0; cursor:pointer; text-decoration:none;
+  transition:transform .25s ease;
+}
+.icon-btn:hover,
+.icon-btn:focus{ transform:scale(1.15) }
+.icon-btn svg{ width:28px; height:28px }
+.contact-right{ width:100%; margin-top:0; padding-top:6px }
+.form-label{
+  display:block; margin:28px 0 12px 0;
+  font-family:"Tusker Grotesk", sans-serif; font-weight:500;
+  font-size:var(--fs-nav); line-height:var(--lh-tight);
+  letter-spacing:var(--ls-4pct); text-transform:uppercase;
+}
+.form-input,.form-textarea{
+  width:100%; border:2px solid var(--black);
+  font:400 var(--fs-body)/1.1 var(--font-body);
+  color:var(--black); padding:8px 12px; background:#fff;
+  margin-bottom:18px;
+}
+.form-input{ height:40px }
+.form-textarea{ height:160px; resize:vertical; min-height:160px }
+.form-input::placeholder,.form-textarea::placeholder{ color:rgba(0,0,0,.5) }
+@media (max-width:900px){
+  .contact-grid{ grid-template-columns:1fr; row-gap:32px }
+  .contact-left{ max-width:600px }
+  .contact-right{ width:100% }
 }
 
 /* ------------ Responsive ------------ */
@@ -275,14 +315,12 @@ h1.name-outline{
   .about-photo{ width:min(100%,420px); margin-inline:0 }
   .about-right{ max-width:600px }
 }
-
 @media (max-width:900px){
   .portfolio-grid{ grid-template-columns:1fr; gap:40px }
   .project-header{ grid-template-columns:1fr }
-  .project-note{ grid-column:1; text-align:left }
+  .project-note{ grid-column:1; text-align:left; justify-self:start }
   .project-gallery{ grid-template-columns:1fr }
 }
-
 @media (max-width:600px){
   :root{
     --fs-nav:16px; --fs-discipline:22px;
@@ -292,244 +330,33 @@ h1.name-outline{
     --name-shift-x:0px;  --name-shift-y:0px;
     --disc-shift-x:0px;  --disc-shift-y:0px;
   }
-  .header-grid{ grid-template-columns:repeat(4, 1fr); row-gap:12px }
-  .homewordmark{ justify-self:center }
 }
 
-/* === MMK side-facts controls === */
-:root{
-  /* tweak these two freely */
-  --project-header-row-gap: 28px; /* space between the title and the row below (body + side facts) */
-  --project-note-top: 10px;        /* fine vertical nudge of side facts (use +px to move down, -px up) */
-}
-
-/* header row: two equal columns (matches gallery), top aligned */
-.project-header{
-  grid-template-columns: 1fr 1fr;              /* left = body, right = side facts */
-  row-gap: var(--project-header-row-gap);      /* title → row spacing */
-  column-gap: var(--project-columns-gap);      /* stays in sync with gallery gap */
-  align-items: start;                           /* top-align both columns */
-}
-
-.project-lede{
-  grid-column: 1;
-  align-self: start;
-  margin-top: 0;                                /* ensure no accidental offset */
-}
-
-.project-note{
-  grid-column: 2;
-  align-self: start;                            /* top with body */
-  justify-self: end;                            /* flush with right edge of column */
-  text-align: right;                            /* rag-right to the column edge */
-  margin-top: var(--project-note-top);          /* fine vertical nudge control */
-}
-
-/* === Even spacing across the 4 header items (logo, About, Portfolio, Contact) === */
-.header-grid{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;  /* equal gaps between the 4 items */
-  gap: 0;                           /* let space-between do the spacing */
-}
-
-/* remove grid-specific alignment that could fight flex */
-.header-grid > *{ justify-self: initial; }
-
-/* mobile: allow wrapping and keep it neat */
-@media (max-width: 600px){
-  .header-grid{
-    flex-wrap: wrap;
-    row-gap: 12px;
-  }
-  .homewordmark{ order: -1; width: 100%; } /* logo on its own row, left-aligned */
-}
-
-/* Hero subhead (under the big name) — force Tusker 5700 Bold */
-.hero .discipline{
-  font-family: "Tusker Grotesk", sans-serif;
-  font-weight: 700;                     /* 5700 Bold */
-  font-size: var(--fs-discipline);      /* 30px */
-  line-height: var(--lh-tight);
-  letter-spacing: var(--ls-4pct);
-  text-transform: uppercase;
-  color: #000;
-}
 /* ------------ Footer ------------ */
 .site-footer{
-  border-top: 2px solid var(--black);
-  padding: 16px 0;
-  margin-top: 48px;
-
-  /* Roboto Regular 20px */
-  font: 400 var(--fs-body)/var(--lh-tight) var(--font-body);
+  border-top:2px solid var(--black);
+  padding:16px 0;
+  margin-top:48px;
+  font:400 var(--fs-body)/var(--lh-tight) var(--font-body);
 }
-
-.footer-grid{
-  display: flex;
-  gap: 32px;                /* Abstand zwischen Links */
-}
-
-.site-footer a{
-  text-decoration: none;    /* wie im Screenshot */
-}
-
-.site-footer a:hover{
-  opacity: .85;
-}
-
-/* ------------ Legal pages (Impressum/Datenschutz) ------------ */
-.legal-page { /* nur ein Hook für evtl. spätere Anpassungen */ }
-
-.legal-content{
-  /* Roboto Regular 20px – du nutzt das schon global,
-     aber hier fixen wir die Breite + Fluss */
-  width: 50%;          /* ~ halbe Seite auf Desktop */
-  max-width: 680px;    /* gute Leselänge */
-  text-align: left;
-}
-
-@media (max-width: 900px){
-  .legal-content{
-    width: 100%;       /* auf Mobile volle Breite */
-    max-width: none;
-  }
-}
-
-/* Footer (falls noch nicht gesetzt) */
-.site-footer{
-  border-top: 2px solid var(--black);
-  padding: 16px 0;
-  margin-top: 48px;
-  font: 400 var(--fs-body)/var(--lh-tight) var(--font-body); /* Roboto 20px */
-}
-.footer-grid{
-  display: flex;
-  gap: 32px;
-}
+.footer-grid{ display:flex; gap:32px }
 .site-footer a:hover{ opacity:.85 }
 
-/* ------------ Contact page layout ------------ */
-.contact-grid{
-  display: grid;
-  grid-template-columns: 1fr 1fr;             /* links Text, rechts Formular */
-  column-gap: var(--project-columns-gap);
-  align-items: start;
+/* ------------ Legal pages ------------ */
+.legal-page{}
+.legal-content{
+  width:50%;
+  max-width:680px;
+  text-align:left;
+}
+@media (max-width:900px){
+  .legal-content{ width:100%; max-width:none }
 }
 
-/* linke Spalte: gleiche Textbreite wie About */
-.contact-left{ max-width: var(--about-text-w); }
-.contact-intro p{ margin: 0 0 16px 0; }
-
-/* 48×48 runde Icon-Buttons (LinkedIn + Submit) */
-.icon-btn{
-  display: inline-flex;
-  align-items: center; justify-content: center;
-  width: 48px; height: 48px;
-  border-radius: 10px;              /* schön abgerundet */
-  background: var(--black);
-  color: var(--white);
-  margin-top: 16px;
-  border: 0;
-  cursor: pointer;
-  text-decoration: none;
+/* Hero subhead (unter großem Namen) – Tusker 5700 Bold */
+.hero .discipline{
+  font-family:"Tusker Grotesk", sans-serif;
+  font-weight:700; font-size:var(--fs-discipline);
+  line-height:var(--lh-tight); letter-spacing:var(--ls-4pct);
+  text-transform:uppercase; color:#000;
 }
-.icon-btn:hover{ opacity: .9 }
-
-/* rechte Spalte: Formular bis zur Mitte → volle Breite der rechten Spalte */
-.contact-right{ width: 100%; }
-
-/* Labels im Tusker 5700 Bold (wie kleine Headlines) */
-.form-label{
-  display: block;
-  margin: 24px 0 8px 0;
-  font: 700 30px/var(--lh-tight) "Tusker Grotesk";
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-}
-
-/* Felder: 40px / 160px, 2px Border, Roboto 20px, 50% schwarze Placeholder */
-.form-input,
-.form-textarea{
-  width: 100%;
-  border: 2px solid var(--black);
-  font: 400 var(--fs-body)/1.1 var(--font-body);
-  color: var(--black);
-  padding: 8px 12px;
-  background: #fff;
-}
-.form-input{ height: 40px; }
-.form-textarea{ height: 160px; resize: vertical; min-height: 160px; }
-
-.form-input::placeholder,
-.form-textarea::placeholder{ color: rgba(0,0,0,.5); }
-
-/* Abstand zum Submit-Icon */
-.contact-form .icon-btn{ margin-top: 16px; }
-
-/* Responsive: auf Mobile eine Spalte, Felder volle Breite */
-@media (max-width: 900px){
-  .contact-grid{ grid-template-columns: 1fr; row-gap: 32px; }
-  .contact-left{ max-width: 600px; }    /* angenehme Lesebreite */
-  .contact-right{ width: 100%; }
-}
-/* --- CONTACT PAGE POLISH --- */
-
-/* 1) Labels: same font as header links (Tusker), uppercase */
-.form-label{
-  display:block;
-  margin: 28px 0 12px 0;              /* more space to the field */
-  font-family: "Tusker Grotesk", sans-serif;
-  font-weight: 500;                    /* matches .header-link (500) */
-  font-size: var(--fs-nav);            /* 20px like header */
-  line-height: var(--lh-tight);
-  letter-spacing: var(--ls-4pct);
-  text-transform: uppercase;
-}
-
-/* 2) More air between fields as well */
-.form-input,
-.form-textarea{
-  margin-bottom: 18px;                 /* extra spacing below each field */
-}
-
-/* 3) Form top aligns with the "Contact me" headline on the left */
-.contact-grid{ align-items: start; }
-.contact-right{ margin-top: 0; padding-top: 6px; }
-/* tweak the padding-top (e.g. 0–12px) until the first label visually lines up with the headline cap height */
-
-/* 4) Bigger icon inside the 48x48 square buttons (LinkedIn + submit) */
-.icon-btn svg{
-  width: 28px;
-  height: 28px;                        /* bigger glyph, same 48x48 button */
-}
-
-/* --- Hover-Zoom für Icon-Buttons (LinkedIn + Submit) --- */
-.icon-btn {
-  transition: transform 0.25s ease;
-}
-
-.icon-btn:hover,
-.icon-btn:focus {
-  transform: scale(1.15);   /* leichtes Zoomen */
-}
-
-.site-footer {
-  margin-top: 600px; /* Passt den Abstand nach oben an */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
