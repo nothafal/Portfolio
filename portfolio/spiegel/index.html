@@ -11,59 +11,32 @@
   <!-- Preload display font -->
   <link rel="preload" href="../../fonts/TuskerGrotesk-5700Bold.woff2" as="font" type="font/woff2" crossorigin>
   <!-- Global styles -->
-  <link rel="stylesheet" href="../../styles.css?v=46">
+  <link rel="stylesheet" href="../../styles.css?v=47">
 
-  <!-- Page-specific layout for Spiegel -->
+  <!-- Page-specific layout (gleiches Vertical Spacing wie die anderen Projekte) -->
   <style>
-    /* Tuning-Variablen nur für diese Seite */
-    .spiegel-page{
-      --sp-vert-gap: 80px;   /* größerer Abstand oben/unten für alle Blöcke */
-      --sp-h-gap: 48px;      /* Abstand zwischen Items in den Reihen */
-      --sp-left-max: 80%;    /* Reihe 1: Linke Gruppe (2+3) bewusst kleiner */
-      --sp-right-max: 72%;   /* Reihe 2: Rechtes einzelnes (7) kleiner + rechtsbündig */
-    }
-
-    /* Grundlayout: zwei Hälften */
+    /* Reihen mit einheitlichem Gutter wie im Projekt-Layout */
     .sp-row{
-      display: grid;
-      grid-template-columns: 1fr 1fr;           /* links = 50%, rechts = 50% */
-      column-gap: var(--sp-h-gap);
-      align-items: start;
-      margin: var(--sp-vert-gap) 0;            /* vertikaler Abstand der Reihen */
+      display:grid;
+      column-gap: var(--project-columns-gap);
+      align-items:start;
+      margin: var(--project-columns-gap) 0; /* gleicher Abstand oben/unten */
     }
+    /* Row 1: klein, klein, groß – gleichmäßige Gaps, bündig links/rechts */
+    .sp-row--1{ grid-template-columns: 1fr 1fr 2fr; }
+    /* Row 2: groß, klein – bündig links/rechts */
+    .sp-row--2{ grid-template-columns: 2fr 1fr; }
+
     .sp-row figure{ margin:0 }
     .sp-row img{ width:100%; height:auto; display:block }
 
-    /* Reihe 1: links zwei „kleine“ gleich groß, rechts #4 bis zum Rand */
-    .sp-row1-left{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: var(--sp-h-gap);
-      max-width: var(--sp-left-max);
-      justify-self: start;
-      align-items: start;
-      justify-items: start;
-    }
-    .sp-row1-right{ justify-self: stretch }     /* füllt rechte Hälfte komplett */
-
-    /* Reihe 2: links #6 bis Mitte, rechts #7 kleiner & rechtsbündig */
-    .sp-row2-left{ justify-self: stretch }
-    .sp-row2-right{
-      max-width: var(--sp-right-max);
-      justify-self: end;
-    }
-
-    /* Mehr vertikaler Abstand für alle Heroes dieser Seite */
-    .spiegel-page .project-hero{ margin: var(--sp-vert-gap) 0 }
-
-    /* Mobile: alles untereinander */
+    /* Mobile: untereinander, gleiche Abstände */
     @media (max-width: 900px){
-      .sp-row{ grid-template-columns:1fr }
-      .sp-row1-left, .sp-row2-right{ max-width:100% }
+      .sp-row--1, .sp-row--2{ grid-template-columns:1fr }
     }
   </style>
 </head>
-<body class="spiegel-page">
+<body>
 
   <!-- Header -->
   <header class="site-header">
@@ -96,29 +69,25 @@
         <img class="project-hero-img" src="./images/spiegel-gallery-1.png" alt="DER SPIEGEL – Hero 1">
       </figure>
 
-      <!-- REIHE 1: 2 & 3 links oben bündig + 4 von Mitte bis rechter Rand -->
-      <div class="sp-row">
-        <div class="sp-row1-left">
-          <figure class="zoom"><img src="./images/spiegel-gallery-2.png" alt="Spiegel Galerie 2"></figure>
-          <figure class="zoom"><img src="./images/spiegel-gallery-3.png" alt="Spiegel Galerie 3"></figure>
-        </div>
-        <figure class="zoom sp-row1-right"><img src="./images/spiegel-gallery-4.png" alt="Spiegel Galerie 4 (rechts bis Mitte)"></figure>
+      <!-- REIHE 1: 2, 3 (klein) links; 4 groß von Mitte bis rechter Rand -->
+      <div class="sp-row sp-row--1">
+        <figure class="zoom"><img src="./images/spiegel-gallery-2.png" alt="Spiegel Galerie 2"></figure>
+        <figure class="zoom"><img src="./images/spiegel-gallery-3.png" alt="Spiegel Galerie 3"></figure>
+        <figure class="zoom"><img src="./images/spiegel-gallery-4.png" alt="Spiegel Galerie 4 (rechts)"></figure>
       </div>
 
-      <!-- HERO #2 (MITTE) -->
+      <!-- HERO #2 (Mitte) -->
       <figure class="project-hero zoom">
         <img class="project-hero-img" src="./images/spiegel-gallery-5.png" alt="DER SPIEGEL – Hero 2">
       </figure>
 
-      <!-- REIHE 2: 6 von links bis Mitte, 7 rechtsbündig -->
-      <div class="sp-row">
-        <figure class="zoom sp-row2-left"><img src="./images/spiegel-gallery-6.png" alt="Spiegel Galerie 6 (links bis Mitte)"></figure>
-        <div class="sp-row2-right">
-          <figure class="zoom"><img src="./images/spiegel-gallery-7.png" alt="Spiegel Galerie 7 rechts"></figure>
-        </div>
+      <!-- REIHE 2: 6 groß von links bis Mitte; 7 klein rechtsbündig -->
+      <div class="sp-row sp-row--2">
+        <figure class="zoom"><img src="./images/spiegel-gallery-6.png" alt="Spiegel Galerie 6 (links)"></figure>
+        <figure class="zoom"><img src="./images/spiegel-gallery-7.png" alt="Spiegel Galerie 7 (rechts)"></figure>
       </div>
 
-      <!-- HERO #3 (letztes) -->
+      <!-- HERO #3 -->
       <figure class="project-hero zoom">
         <img class="project-hero-img" src="./images/spiegel-gallery-8.png" alt="DER SPIEGEL – Hero 3">
       </figure>
