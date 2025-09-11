@@ -11,29 +11,59 @@
   <!-- Preload display font -->
   <link rel="preload" href="../../fonts/TuskerGrotesk-5700Bold.woff2" as="font" type="font/woff2" crossorigin>
   <!-- Global styles -->
-  <link rel="stylesheet" href="../../styles.css?v=44">
+  <link rel="stylesheet" href="../../styles.css?v=46">
 
-  <!-- Page-specific layout for Spiegel gallery -->
+  <!-- Page-specific layout for Spiegel -->
   <style>
-    /* Zwei spezielle Reihen mit angepassten Spaltenbreiten */
-    .sp-row{ display:grid; column-gap:var(--project-columns-gap); align-items:start; margin:0 0 var(--project-columns-gap) 0; }
-    /* Row 1: links zwei gleich breite kleine, rechts ein halbes Breiten-Item */
-    .sp-row--1{ grid-template-columns: 1fr 1fr 2fr; }
-    /* Row 2: links das halbe Breiten-Item, rechts ein kleines Bild rechtsbündig */
-    .sp-row--2{ grid-template-columns: 2fr 1fr; }
+    /* Tuning-Variablen nur für diese Seite */
+    .spiegel-page{
+      --sp-vert-gap: 80px;   /* größerer Abstand oben/unten für alle Blöcke */
+      --sp-h-gap: 48px;      /* Abstand zwischen Items in den Reihen */
+      --sp-left-max: 80%;    /* Reihe 1: Linke Gruppe (2+3) bewusst kleiner */
+      --sp-right-max: 72%;   /* Reihe 2: Rechtes einzelnes (7) kleiner + rechtsbündig */
+    }
+
+    /* Grundlayout: zwei Hälften */
+    .sp-row{
+      display: grid;
+      grid-template-columns: 1fr 1fr;           /* links = 50%, rechts = 50% */
+      column-gap: var(--sp-h-gap);
+      align-items: start;
+      margin: var(--sp-vert-gap) 0;            /* vertikaler Abstand der Reihen */
+    }
     .sp-row figure{ margin:0 }
     .sp-row img{ width:100%; height:auto; display:block }
-    /* Rechtsbündige Ausrichtung für Bild 7 */
-    .sp-align-right{ justify-self:end }
 
-    /* Mobil: je Reihe untereinander */
+    /* Reihe 1: links zwei „kleine“ gleich groß, rechts #4 bis zum Rand */
+    .sp-row1-left{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: var(--sp-h-gap);
+      max-width: var(--sp-left-max);
+      justify-self: start;
+      align-items: start;
+      justify-items: start;
+    }
+    .sp-row1-right{ justify-self: stretch }     /* füllt rechte Hälfte komplett */
+
+    /* Reihe 2: links #6 bis Mitte, rechts #7 kleiner & rechtsbündig */
+    .sp-row2-left{ justify-self: stretch }
+    .sp-row2-right{
+      max-width: var(--sp-right-max);
+      justify-self: end;
+    }
+
+    /* Mehr vertikaler Abstand für alle Heroes dieser Seite */
+    .spiegel-page .project-hero{ margin: var(--sp-vert-gap) 0 }
+
+    /* Mobile: alles untereinander */
     @media (max-width: 900px){
-      .sp-row--1, .sp-row--2{ grid-template-columns:1fr }
-      .sp-align-right{ justify-self:start }
+      .sp-row{ grid-template-columns:1fr }
+      .sp-row1-left, .sp-row2-right{ max-width:100% }
     }
   </style>
 </head>
-<body>
+<body class="spiegel-page">
 
   <!-- Header -->
   <header class="site-header">
@@ -66,22 +96,31 @@
         <img class="project-hero-img" src="./images/spiegel-gallery-1.png" alt="DER SPIEGEL – Hero 1">
       </figure>
 
-      <!-- ROW 1 (kleine Bilder): 2, 3 links; 4 von rechts bis Mitte -->
-      <div class="sp-row sp-row--1">
-        <figure class="zoom"><img src="./images/spiegel-gallery-2.png" alt="Spiegel Galerie 2"></figure>
-        <figure class="zoom"><img src="./images/spiegel-gallery-3.png" alt="Spiegel Galerie 3"></figure>
-        <figure class="zoom"><img src="./images/spiegel-gallery-4.png" alt="Spiegel Galerie 4 (rechte Hälfte)"></figure>
+      <!-- REIHE 1: 2 & 3 links oben bündig + 4 von Mitte bis rechter Rand -->
+      <div class="sp-row">
+        <div class="sp-row1-left">
+          <figure class="zoom"><img src="./images/spiegel-gallery-2.png" alt="Spiegel Galerie 2"></figure>
+          <figure class="zoom"><img src="./images/spiegel-gallery-3.png" alt="Spiegel Galerie 3"></figure>
+        </div>
+        <figure class="zoom sp-row1-right"><img src="./images/spiegel-gallery-4.png" alt="Spiegel Galerie 4 (rechts bis Mitte)"></figure>
       </div>
 
-      <!-- ROW 2 (kleine Bilder): 6 von links bis Mitte; 7 rechtsbündig -->
-      <div class="sp-row sp-row--2">
-        <figure class="zoom"><img src="./images/spiegel-gallery-6.png" alt="Spiegel Galerie 6 (linke Hälfte)"></figure>
-        <figure class="zoom sp-align-right"><img src="./images/spiegel-gallery-7.jpg" alt="Spiegel Galerie 7 rechts"></figure>
-      </div>
-
-      <!-- HERO #2 -->
+      <!-- HERO #2 (MITTE) -->
       <figure class="project-hero zoom">
-        <img class="project-hero-img" src="./images/spiegel-gallery-8.png" alt="DER SPIEGEL – Hero 2">
+        <img class="project-hero-img" src="./images/spiegel-gallery-5.png" alt="DER SPIEGEL – Hero 2">
+      </figure>
+
+      <!-- REIHE 2: 6 von links bis Mitte, 7 rechtsbündig -->
+      <div class="sp-row">
+        <figure class="zoom sp-row2-left"><img src="./images/spiegel-gallery-6.png" alt="Spiegel Galerie 6 (links bis Mitte)"></figure>
+        <div class="sp-row2-right">
+          <figure class="zoom"><img src="./images/spiegel-gallery-7.png" alt="Spiegel Galerie 7 rechts"></figure>
+        </div>
+      </div>
+
+      <!-- HERO #3 (letztes) -->
+      <figure class="project-hero zoom">
+        <img class="project-hero-img" src="./images/spiegel-gallery-8.png" alt="DER SPIEGEL – Hero 3">
       </figure>
 
     </div>
@@ -97,4 +136,3 @@
 
 </body>
 </html>
-
