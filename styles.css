@@ -326,7 +326,9 @@ h1.name-outline{
   transition:transform .25s ease, opacity .25s ease;
 }
 
-.cv-download-btn:hover,
+.cv-download-btn:hover{
+  transform:translateY(-2px);
+}
 .cv-download-btn:focus{
   transform:scale(1.04);
   opacity:.95;
