@@ -43,7 +43,17 @@
           Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
         </p>
 
-        <img class="hero-photo" src="./images/index/Example_Me.png" alt="Portrait of Alyssa Chanyanut Nothaft" />
+        <div class="hero-slider">
+  <img class="hero-photo slider-image is-active" src="./images/portfolio/akkordeon.jpg" alt="Akkordeon project" />
+  <img class="hero-photo slider-image" src="./images/portfolio/menopause.png" alt="Menopause project" />
+  <img class="hero-photo slider-image" src="./images/portfolio/mmk.png" alt="MMK project" />
+  <img class="hero-photo slider-image" src="./images/portfolio/spiegel.png" alt="Spiegel project" />
+  <img class="hero-photo slider-image" src="./images/portfolio/vdc.jpg" alt="VDC project" />
+  <img class="hero-photo slider-image" src="./images/portfolio/vdc.png" alt="VDC variation" />
+  <img class="hero-photo slider-image" src="./images/portfolio/werkschau.jpg" alt="Werkschau project" />
+  <img class="hero-photo slider-image" src="./images/portfolio/werkschau.png" alt="Werkschau variation" />
+  <img class="hero-photo slider-image" src="./images/portfolio/wubv.png" alt="WUBV project" />
+</div>
       </div>
 
       <div class="hero-right">
@@ -76,4 +86,13 @@
   </footer>
 </body>
 </html>
+<script>
+  const slides = document.querySelectorAll(".slider-image");
+  let currentSlide = 0;
 
+  setInterval(() => {
+    slides[currentSlide].classList.remove("is-active");
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add("is-active");
+  }, 2200); // slightly faster because you have many images
+</script>
