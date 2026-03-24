@@ -624,3 +624,30 @@ h1.name-outline{
     transform:scale(0.96) translate(var(--name-shift-x), var(--name-shift-y));
   }
 }
+.thai-switch{
+  position:relative;
+  display:block;
+}
+
+.thai-switch .thai{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  font-family:"Athiti", sans-serif;
+  font-weight:700;
+  letter-spacing:0;
+  transition:opacity 0.2s ease;
+}
+
+/* Hover Effekt */
+.homewordmark:hover .latin{
+  opacity:0;
+}
+
+.homewordmark:hover .thai{
+  opacity:1;
+}
+.thai-switch .latin,
+.thai-switch .thai{
+  transition:opacity 0.25s ease;
+}
