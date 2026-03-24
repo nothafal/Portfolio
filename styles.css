@@ -660,6 +660,7 @@ h1.name-outline{
   letter-spacing:0.02em;
   line-height:1.15;
   white-space:nowrap;
+  transform:translateX(0.04em);
 }
 
 .homewordmark:hover .latin,
