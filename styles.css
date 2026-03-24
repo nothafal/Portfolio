@@ -21,6 +21,7 @@
   font-style:normal;
   font-display:swap;
 }
+
 /* ------------ Tokens ------------ */
 :root{
   --black:#000; --white:#fff;
@@ -89,12 +90,20 @@ a{color:inherit; text-decoration:none}
   flex-wrap:nowrap;
 }
 .homewordmark{
-  font:700 var(--fs-nav)/var(--lh-tight) "Tusker Grotesk";
+  font:700 var(--fs-nav)/1.05 "Tusker Grotesk";
   letter-spacing:var(--ls-logo-adjusted);
   text-transform:uppercase;
   color:var(--black);
 }
-.homewordmark span{ display:block }
+.homewordmark > span,
+.homewordmark .thai-switch{
+  display:block;
+}
+.homewordmark > span + span,
+.homewordmark .thai-switch + span{
+  margin-top:0.12em;
+}
+
 .header-link{
   font:500 var(--fs-nav)/var(--lh-tight) "Tusker Grotesk";
   letter-spacing:var(--ls-4pct);
@@ -624,9 +633,22 @@ h1.name-outline{
     transform:scale(0.96) translate(var(--name-shift-x), var(--name-shift-y));
   }
 }
+
+/* ------------ Thai hover swap ------------ */
 .thai-switch{
   position:relative;
   display:block;
+  min-height:1em;
+}
+
+.thai-switch .latin,
+.thai-switch .thai{
+  display:block;
+  transition:opacity 0.25s ease;
+}
+
+.thai-switch .latin{
+  opacity:1;
 }
 
 .thai-switch .thai{
@@ -635,19 +657,17 @@ h1.name-outline{
   opacity:0;
   font-family:"Athiti", sans-serif;
   font-weight:700;
-  letter-spacing:0;
-  transition:opacity 0.2s ease;
+  letter-spacing:0.02em;
+  line-height:1.15;
+  white-space:nowrap;
 }
 
-/* Hover Effekt */
-.homewordmark:hover .latin{
+.homewordmark:hover .latin,
+.homewordmark:focus-visible .latin{
   opacity:0;
 }
 
-.homewordmark:hover .thai{
+.homewordmark:hover .thai,
+.homewordmark:focus-visible .thai{
   opacity:1;
-}
-.thai-switch .latin,
-.thai-switch .thai{
-  transition:opacity 0.25s ease;
 }
