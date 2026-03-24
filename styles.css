@@ -253,9 +253,12 @@ h1.name-outline{
 }
 
 .about-subheadline{
-  margin:0 0 14px 0;
-  font:700 24px/1.1 "Tusker Grotesk";
-  letter-spacing:0.04em;
+  margin:28px 0 12px 0;
+  font-family:"Tusker Grotesk", sans-serif;
+  font-weight:500;
+  font-size:var(--fs-nav);
+  line-height:var(--lh-tight);
+  letter-spacing:var(--ls-4pct);
   text-transform:uppercase;
   color:#000;
 }
