@@ -307,7 +307,6 @@ h1.name-outline{
   display:flex;
   align-items:center;
   justify-content:center;
-  transform:translateY(1px);
   font-family:"Tusker Grotesk", sans-serif;
   font-weight:500;
   font-size:var(--fs-nav);
@@ -315,6 +314,7 @@ h1.name-outline{
   letter-spacing:var(--ls-4pct);
   text-transform:uppercase;
   color:#000;
+  transform:translateY(1px);
 }
 
 .cv-download-btn{
@@ -341,25 +341,29 @@ h1.name-outline{
   transition:transform .25s ease, opacity .25s ease;
 }
 
-.cv-download-btn:hover,
-.cv-download-btn:focus{
-  opacity:.95;
+.cv-download-btn span{
+  display:block;
+  transform:translateY(-1px);
 }
 
-/* About: Button optisch etwas höher */
+/* Default hover like contact button */
+.cv-download-btn:hover,
+.cv-download-btn:focus{
+  transform:scale(1.15);
+}
+
+/* About-specific optical alignment */
+.about-page .cv-download{
+  align-items:center;
+}
+
 .about-page .cv-download-btn{
-  transform:translateY(-3px);
+  transform:translateY(-2px);
 }
 
 .about-page .cv-download-btn:hover,
 .about-page .cv-download-btn:focus{
-  transform:translateY(-3px);
-  opacity:.95;
-}
-
-.cv-download-btn span{
-  display:block;
-  transform:translateY(-1px);
+  transform:translateY(-2px) scale(1.15);
 }
 
 /* etwas mehr Luft unten auf der About-Seite */
@@ -510,6 +514,15 @@ h1.name-outline{
 
   .cv-download-btn span{
     transform:translateY(-1px);
+  }
+
+  .about-page .cv-download-btn{
+    transform:translateY(-2px);
+  }
+
+  .about-page .cv-download-btn:hover,
+  .about-page .cv-download-btn:focus{
+    transform:translateY(-2px) scale(1.15);
   }
 
   .portfolio-grid{ grid-template-columns:1fr; gap:40px }
