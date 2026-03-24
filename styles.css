@@ -14,7 +14,13 @@
   src:url("./fonts/TuskerGrotesk-5800Super.woff2") format("woff2");
   font-weight:800; font-style:normal; font-display:swap;
 }
-
+@font-face{
+  font-family:"Athiti";
+  src:url("./fonts/Athiti-Bold.ttf") format("truetype");
+  font-weight:700;
+  font-style:normal;
+  font-display:swap;
+}
 /* ------------ Tokens ------------ */
 :root{
   --black:#000; --white:#fff;
