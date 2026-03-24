@@ -15,7 +15,7 @@
   <link rel="preload" href="./fonts/TuskerGrotesk-5700Bold.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Stylesheet (cache-busted) -->
-  <link rel="stylesheet" href="styles.css?v=46">
+  <link rel="stylesheet" href="styles.css?v=47">
 </head>
 <body id="top">
 
@@ -43,22 +43,20 @@
           Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
         </p>
 
-        <div class="hero-slider">
-  <img class="hero-photo slider-image is-active" src="./images/portfolio/akkordeon.jpg" alt="Akkordeon project" />
-  <img class="hero-photo slider-image" src="./images/portfolio/menopause.png" alt="Menopause project" />
-  <img class="hero-photo slider-image" src="./images/portfolio/mmk.png" alt="MMK project" />
-  <img class="hero-photo slider-image" src="./images/portfolio/spiegel.png" alt="Spiegel project" />
-  <img class="hero-photo slider-image" src="./images/portfolio/vdc.jpg" alt="VDC project" />
-  <img class="hero-photo slider-image" src="./images/portfolio/werkschau.jpg" alt="Werkschau project" />
-  <img class="hero-photo slider-image" src="./images/portfolio/wubv.png" alt="WUBV project" />
-</div>
+        <div class="hero-slider" aria-label="Selected portfolio works">
+          <img class="slider-image is-active" src="./images/portfolio/akkordeon.jpg" alt="Akkordeon project" />
+          <img class="slider-image" src="./images/portfolio/menopause.png" alt="Menopause project" />
+          <img class="slider-image" src="./images/portfolio/mmk.png" alt="MMK project" />
+          <img class="slider-image" src="./images/portfolio/spiegel.png" alt="Spiegel project" />
+          <img class="slider-image" src="./images/portfolio/vdc.jpg" alt="VDC project" />
+          <img class="slider-image" src="./images/portfolio/werkschau.jpg" alt="Werkschau project" />
+          <img class="slider-image" src="./images/portfolio/wubv.png" alt="WUBV project" />
+        </div>
       </div>
 
       <div class="hero-right">
-        <!-- SEO & Accessibility: H1 bleibt semantisch, aber unsichtbar -->
         <h1 class="sr-only">Alyssa Chanyanut Nothaft</h1>
 
-        <!-- Sichtbarer Name als SVG, gleiche Größe/Position wie vorher -->
         <figure class="name-svg" role="img" aria-label="Alyssa Chanyanut Nothaft">
           <img class="name-svg-img" src="./images/index/name.svg" alt="Alyssa Chanyanut Nothaft">
         </figure>
@@ -82,16 +80,18 @@
       <a href="/datenschutz/">Datenschutz</a>
     </div>
   </footer>
-</body>
+
   <script>
-  const slides = document.querySelectorAll(".slider-image");
-  let currentSlide = 0;
+    const slides = document.querySelectorAll(".slider-image");
+    let currentSlide = 0;
 
-  setInterval(() => {
-    slides[currentSlide].classList.remove("is-active");
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add("is-active");
-  }, 2200); // slightly faster because you have many images
-</script>
+    if (slides.length > 1) {
+      setInterval(() => {
+        slides[currentSlide].classList.remove("is-active");
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add("is-active");
+      }, 2200);
+    }
+  </script>
+</body>
 </html>
-
