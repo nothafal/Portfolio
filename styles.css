@@ -287,13 +287,17 @@ h1.name-outline{
 }
 
 /* ------------ Download blocks (About + Portfolio) ------------ */
-.cv-download{
+.cv-download,
+.portfolio-download{
   margin-top:48px;
   display:flex;
   flex-direction:row;
   align-items:center;
+  justify-content:center;
   gap:16px;
   flex-wrap:wrap;
+  width:100%;
+  text-align:center;
 }
 
 .portfolio-download{
@@ -512,6 +516,12 @@ h1.name-outline{
   .hero-slider{
     width:min(100%, 90vw);
     aspect-ratio:1 / 1;
+  }
+
+  .cv-download,
+  .portfolio-download{
+    flex-direction:column;
+    gap:10px;
   }
 }
 
