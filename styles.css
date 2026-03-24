@@ -294,7 +294,6 @@ h1.name-outline{
   flex-direction:row;
   align-items:center;
   justify-content:center;
-  align-content:center;
   gap:16px;
   flex-wrap:wrap;
   width:100%;
@@ -310,6 +309,7 @@ h1.name-outline{
   display:flex;
   align-items:center;
   justify-content:center;
+  transform:translateY(1px);
 
   font-family:"Tusker Grotesk", sans-serif;
   font-weight:500;
@@ -324,12 +324,12 @@ h1.name-outline{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  vertical-align:middle;
 
   width:auto;
   min-width:0;
   min-height:0;
-  padding:10px 18px 9px 18px;
+  height:40px;
+  padding:0 18px;
 
   border-radius:10px;
   background:#000;
@@ -350,40 +350,13 @@ h1.name-outline{
 
 .cv-download-btn:hover,
 .cv-download-btn:focus{
-  transform:translateY(-2px);
   opacity:.95;
 }
 
-/* etwas mehr Luft unten auf der About-Seite */
-.about-page .section{
-  padding-bottom:120px;
-}
-
-@media (max-width:900px){
-  .about-page .section{
-    padding-bottom:80px;
-  }
-
-  .about-name{
-    font-size:24px;
-  }
-
-  .about-subheadline{
-    font-size:16px;
-  }
-
-  .cv-download-text{
-  font-size:16px;
-  line-height:1;
-}
-
-.cv-download-btn{
-  padding:8px 14px 7px 14px;
-  border-radius:10px;
-  font-size:16px;
-  line-height:1;
-  min-width:0;
-  min-height:0;
+/* optischer Ausgleich für Tusker im Button */
+.cv-download-btn span{
+  display:block;
+  transform:translateY(-1px);
 }
 }
 
