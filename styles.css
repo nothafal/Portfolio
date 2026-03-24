@@ -306,13 +306,22 @@ h1.name-outline{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-width:220px;
-  min-height:56px;
-  padding:14px 24px;
-  border-radius:14px;
+
+  min-width:180px;
+  min-height:48px;
+  padding:10px 20px;
+
+  border-radius:10px;
   background:#000;
   color:#fff;
-  font:700 20px/1 "Roboto","Helvetica Neue",Arial,sans-serif;
+
+  font-family:"Tusker Grotesk", sans-serif;
+  font-weight:500;
+  font-size:var(--fs-nav);
+  line-height:var(--lh-tight);
+  letter-spacing:var(--ls-4pct);
+  text-transform:uppercase;
+
   text-decoration:none;
   transition:transform .25s ease, opacity .25s ease;
 }
