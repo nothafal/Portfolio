@@ -348,12 +348,12 @@ h1.name-outline{
 
 /* About: Button optisch etwas höher */
 .about-page .cv-download-btn{
-  transform:translateY(-2px);
+  transform:translateY(-3px);
 }
 
 .about-page .cv-download-btn:hover,
 .about-page .cv-download-btn:focus{
-  transform:translateY(-2px);
+  transform:translateY(-3px);
   opacity:.95;
 }
 
