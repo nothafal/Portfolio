@@ -349,7 +349,7 @@ h1.name-outline{
 /* Default hover like contact button */
 .cv-download-btn:hover,
 .cv-download-btn:focus{
-  transform:scale(1.00);
+  transform:scale(1.05);
 }
 
 /* About-specific optical alignment */
@@ -363,7 +363,7 @@ h1.name-outline{
 
 .about-page .cv-download-btn:hover,
 .about-page .cv-download-btn:focus{
-  transform:translateY(-3px) scale(1.00);
+  transform:translateY(-3px) scale(1.05);
 }
 
 /* etwas mehr Luft unten auf der About-Seite */
