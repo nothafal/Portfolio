@@ -294,6 +294,7 @@ h1.name-outline{
   flex-direction:row;
   align-items:center;
   justify-content:center;
+  align-content:center;
   gap:16px;
   flex-wrap:wrap;
   width:100%;
@@ -306,10 +307,14 @@ h1.name-outline{
 
 .cv-download-text{
   margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   font-family:"Tusker Grotesk", sans-serif;
   font-weight:500;
   font-size:var(--fs-nav);
-  line-height:var(--lh-tight);
+  line-height:1;
   letter-spacing:var(--ls-4pct);
   text-transform:uppercase;
   color:#000;
@@ -319,20 +324,27 @@ h1.name-outline{
   display:inline-flex;
   align-items:center;
   justify-content:center;
+  vertical-align:middle;
+
   width:auto;
   min-width:0;
   min-height:0;
-  padding:8px 16px;
+  padding:10px 18px 9px 18px;
+
   border-radius:10px;
   background:#000;
   color:#fff;
+
   font-family:"Tusker Grotesk", sans-serif;
   font-weight:500;
   font-size:var(--fs-nav);
-  line-height:var(--lh-tight);
+  line-height:1;
   letter-spacing:var(--ls-4pct);
   text-transform:uppercase;
   text-decoration:none;
+  text-align:center;
+  white-space:nowrap;
+
   transition:transform .25s ease, opacity .25s ease;
 }
 
@@ -361,16 +373,18 @@ h1.name-outline{
   }
 
   .cv-download-text{
-    font-size:16px;
-  }
+  font-size:16px;
+  line-height:1;
+}
 
-  .cv-download-btn{
-    padding:7px 14px;
-    border-radius:10px;
-    font-size:16px;
-    min-width:0;
-    min-height:0;
-  }
+.cv-download-btn{
+  padding:8px 14px 7px 14px;
+  border-radius:10px;
+  font-size:16px;
+  line-height:1;
+  min-width:0;
+  min-height:0;
+}
 }
 
 /* ------------ Project detail ------------ */
