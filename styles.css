@@ -662,6 +662,9 @@ h1.name-outline{
   opacity:1;
   height:auto;
 }
+.thai-switch .thai{
+  transform:translateY(-0.05em);
+}
 /* --- Portfolio Hover Zusatzinfo (FIXED) --- */
 
 .work-title{
