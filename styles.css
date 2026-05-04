@@ -672,3 +672,29 @@ h1.name-outline{
 .homewordmark:focus-visible .thai{
   opacity:1;
 }
+/* --- Portfolio Hover Zusatzinfo --- */
+
+.work-title{
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+}
+
+.work-meta{
+  font-family:var(--font-body);
+  font-size:var(--fs-body);
+  font-weight:400;
+  letter-spacing:0;
+  text-transform:none;
+
+  opacity:0;
+  transition:opacity 0.25s ease;
+}
+
+/* Hover Effekt */
+@media (hover:hover){
+  .work-card:hover .work-meta,
+  .work-card:focus .work-meta{
+    opacity:1;
+  }
+}
