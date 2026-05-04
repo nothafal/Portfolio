@@ -634,39 +634,45 @@ h1.name-outline{
   }
 }
 
-/* ------------ Thai hover fix (cross-browser safe) ------------ */
+/* ------------ Thai hover fix (FINAL) ------------ */
+
 .thai-switch{
   position:relative;
   display:inline-block;
+  line-height:1;
 }
 
+/* beide exakt gleiche Basis */
 .thai-switch .latin,
 .thai-switch .thai{
   display:block;
-  transition:opacity 0.25s ease;
 }
 
+/* Latin sichtbar */
 .thai-switch .latin{
   opacity:1;
+  transition:opacity 0.2s ease;
 }
 
+/* Thai exakt darüber */
 .thai-switch .thai{
   position:absolute;
-  top:0;
-  left:0;
-  width:100%;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -52%); /* 🔑 zentriert + optisch korrigiert */
+
   opacity:0;
 
   font-family:"Athiti", sans-serif;
   font-weight:700;
 
-  line-height:1.05;
-  letter-spacing:0.02em;
+  white-space:nowrap;
 
-  /* feine vertikale Korrektur */
-  transform:translateY(0.04em);
+  /* wichtig für Safari */
+  -webkit-font-smoothing:antialiased;
 }
 
+/* Hover */
 .homewordmark:hover .latin,
 .homewordmark:focus-visible .latin{
   opacity:0;
