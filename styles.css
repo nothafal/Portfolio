@@ -634,11 +634,10 @@ h1.name-outline{
   }
 }
 
-/* ------------ Thai hover swap ------------ */
+/* ------------ Thai hover fix (cross-browser safe) ------------ */
 .thai-switch{
   position:relative;
-  display:block;
-  min-height:1em;
+  display:inline-block;
 }
 
 .thai-switch .latin,
@@ -653,14 +652,19 @@ h1.name-outline{
 
 .thai-switch .thai{
   position:absolute;
-  inset:0;
+  top:0;
+  left:0;
+  width:100%;
   opacity:0;
+
   font-family:"Athiti", sans-serif;
   font-weight:700;
+
+  line-height:1.05;
   letter-spacing:0.02em;
-  line-height:1.15;
-  white-space:nowrap;
-  transform:translateX(0.08em);
+
+  /* feine vertikale Korrektur */
+  transform:translateY(0.04em);
 }
 
 .homewordmark:hover .latin,
