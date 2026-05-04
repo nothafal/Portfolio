@@ -624,53 +624,43 @@ h1.name-outline{
   }
 }
 
-/* ------------ Thai hover fix (FINAL) ------------ */
+/* ------------ Thai hover FIX FINAL ------------ */
 
 .thai-switch{
-  position:relative;
-  display:inline-block;
-  line-height:1;
-}
-
-/* beide exakt gleiche Basis */
-.thai-switch .latin,
-.thai-switch .thai{
   display:block;
 }
 
-/* Latin sichtbar */
-.thai-switch .latin{
-  opacity:1;
-  transition:opacity 0.2s ease;
+/* beide Texte normal im Flow */
+.thai-switch .latin,
+.thai-switch .thai{
+  display:block;
+  line-height:1.05;
 }
 
-/* Thai exakt darüber */
+/* Thai leicht kleiner machen (passt besser in den Space) */
 .thai-switch .thai{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -52%); /* 🔑 zentriert + optisch korrigiert */
-
-  opacity:0;
-
   font-family:"Athiti", sans-serif;
   font-weight:700;
 
-  white-space:nowrap;
+  font-size:0.9em; /* 🔑 verhindert „zu groß / klebt“ */
 
-  /* wichtig für Safari */
-  -webkit-font-smoothing:antialiased;
-}
-
-/* Hover */
-.homewordmark:hover .latin,
-.homewordmark:focus-visible .latin{
   opacity:0;
+  height:0;
+  overflow:hidden;
+
+  transition:opacity 0.2s ease;
 }
 
-.homewordmark:hover .thai,
-.homewordmark:focus-visible .thai{
+/* Hover Verhalten */
+.homewordmark:hover .latin{
+  opacity:0;
+  height:0;
+  overflow:hidden;
+}
+
+.homewordmark:hover .thai{
   opacity:1;
+  height:auto;
 }
 /* --- Portfolio Hover Zusatzinfo (FIXED) --- */
 
