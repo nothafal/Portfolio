@@ -676,15 +676,20 @@ h1.name-outline{
 .homewordmark:focus-visible .thai{
   opacity:1;
 }
-/* --- Portfolio Hover Zusatzinfo --- */
+/* --- Portfolio Hover Zusatzinfo (FIXED) --- */
 
 .work-title{
-  display:flex;
-  align-items:baseline;
-  gap:12px;
+  position:relative;
+  display:block; /* WICHTIG: kein flex mehr */
 }
 
+/* Hover Text */
 .work-meta{
+  position:absolute;
+  left:0;
+  top:100%;
+  margin-top:4px;
+
   font-family:var(--font-body);
   font-size:var(--fs-body);
   font-weight:400;
@@ -692,6 +697,7 @@ h1.name-outline{
   text-transform:none;
 
   opacity:0;
+  pointer-events:none;
   transition:opacity 0.25s ease;
 }
 
