@@ -299,13 +299,13 @@ h1.name-outline{
   margin-bottom:4px !important;
 }
 
-/* ------------ Download blocks (About + Portfolio) ------------ */
+/* ------------ Download blocks FIXED ------------ */
+
 .cv-download,
 .portfolio-download{
   margin-top:48px;
   display:flex;
-  flex-direction:row;
-  align-items:center;
+  align-items:center;        /* 🔑 vertikal zentriert */
   justify-content:center;
   gap:16px;
   flex-wrap:wrap;
@@ -317,73 +317,49 @@ h1.name-outline{
   margin-top:64px;
 }
 
+/* Text links */
 .cv-download-text{
   margin:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   font-family:"Tusker Grotesk", sans-serif;
   font-weight:500;
   font-size:var(--fs-nav);
-  line-height:1;
+  line-height:1;            /* 🔑 wichtig */
   letter-spacing:var(--ls-4pct);
   text-transform:uppercase;
   color:#000;
-  transform:translateY(1px);
 }
 
+/* Button */
 .cv-download-btn{
-  display:inline-flex;
-  align-items:center;
+  display:flex;
+  align-items:center;       /* 🔑 Text IM Button mittig */
   justify-content:center;
-  width:auto;
-  min-width:0;
-  min-height:0;
+
   height:40px;
   padding:0 18px;
   border-radius:10px;
+
   background:#000;
   color:#fff;
+
   font-family:"Tusker Grotesk", sans-serif;
   font-weight:500;
   font-size:var(--fs-nav);
-  line-height:1;
+  line-height:1;            /* 🔑 wichtig */
+
   letter-spacing:var(--ls-4pct);
   text-transform:uppercase;
+
   text-decoration:none;
-  text-align:center;
   white-space:nowrap;
-  transition:transform .25s ease, opacity .25s ease;
+
+  transition:transform .25s ease;
 }
 
-.cv-download-btn span{
-  display:block;
-  transform:translateY(-1px);
-}
-
-/* Default hover like contact button */
+/* Hover */
 .cv-download-btn:hover,
 .cv-download-btn:focus{
   transform:scale(1.05);
-}
-
-/* About-specific optical alignment */
-.about-page .cv-download{
-  align-items:center;
-}
-
-.about-page .cv-download-btn{
-  transform:translateY(-3px);
-}
-
-.about-page .cv-download-btn:hover,
-.about-page .cv-download-btn:focus{
-  transform:translateY(-3px) scale(1.05);
-}
-
-/* etwas mehr Luft unten auf der About-Seite */
-.about-page .section{
-  padding-bottom:120px;
 }
 
 /* ------------ Project detail ------------ */
