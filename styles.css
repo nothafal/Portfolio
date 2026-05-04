@@ -361,6 +361,20 @@ h1.name-outline{
 .cv-download-btn:focus{
   transform:scale(1.05);
 }
+.cv-download-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  height:40px;
+  padding:0 18px;
+
+  line-height:1;
+
+  /* 🔑 DAS ist der Fix */
+  padding-top:2px;
+  padding-bottom:0;
+}
 
 /* ------------ Project detail ------------ */
 .project-header{
