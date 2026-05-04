@@ -372,7 +372,7 @@ h1.name-outline{
   line-height:1;
 
   /* 🔑 DAS ist der Fix */
-  padding-top:1.5px;
+  padding-top:3px;
   padding-bottom:0;
 }
 
