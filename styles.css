@@ -628,22 +628,19 @@ h1.name-outline{
 
 .thai-switch{
   position:relative;
-  display:block;
-  width:100%;
+  display:inline-block;
 }
 
-/* Chanyanut bleibt im Layout und hält den Platz */
 .thai-switch .latin{
   display:block;
   line-height:1.05;
 }
 
-/* Thai liegt mittig über der gesamten Wortmarke */
 .thai-switch .thai{
   position:absolute;
   left:0;
   top:50%;
-  transform:translate(-50%);
+  transform:translateY(-50%);
 
   display:block;
   width:max-content;
@@ -658,6 +655,26 @@ h1.name-outline{
 
   opacity:0;
   pointer-events:none;
+}
+
+@media (hover:hover) and (pointer:fine){
+  .homewordmark:hover .thai-switch .latin{
+    visibility:hidden;
+  }
+
+  .homewordmark:hover .thai-switch .thai{
+    opacity:1;
+  }
+}
+
+@media (hover:none), (pointer:coarse){
+  .thai-switch .latin{
+    visibility:visible;
+  }
+
+  .thai-switch .thai{
+    display:none;
+  }
 }
 
 /* Hover nur auf Desktop */
