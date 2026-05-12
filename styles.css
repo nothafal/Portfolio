@@ -436,11 +436,28 @@ h1.name-outline{
 .contact-left{ max-width:var(--about-text-w) }
 .contact-intro p{ margin:0 0 16px 0 }
 .icon-btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  width:48px; height:48px;
-  border-radius:10px; background:var(--black); color:var(--white);
-  margin-top:16px; border:0; cursor:pointer; text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  width:48px;
+  height:48px;
+
+  border-radius:10px;
+  background:var(--black);
+  color:var(--white);
+
+  margin-top:0;
+
+  border:0;
+  cursor:pointer;
+  text-decoration:none;
+
   transition:transform .25s ease;
+}
+.cv-download .icon-btn,
+.portfolio-download .icon-btn{
+  margin-top:0;
 }
 .icon-btn:hover,
 .icon-btn:focus{ transform:scale(1.15) }
@@ -676,26 +693,3 @@ h1.name-outline{
     display:none;
   }
 }
-
-/* Hover nur auf Desktop */
-@media (hover:hover) and (pointer:fine){
-  .homewordmark:hover .thai-switch .latin{
-    visibility:hidden;
-  }
-
-  .homewordmark:hover .thai-switch .thai{
-    opacity:1;
-  }
-}
-
-/* Auf Mobile kein Hover-Effekt */
-@media (hover:none), (pointer:coarse){
-  .thai-switch .latin{
-    visibility:visible;
-  }
-
-  .thai-switch .thai{
-    display:none;
-  }
-}
-
