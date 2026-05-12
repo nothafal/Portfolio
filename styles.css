@@ -627,73 +627,55 @@ h1.name-outline{
 /* ------------ Thai hover FIX FINAL ------------ */
 
 .thai-switch{
+  position:relative;
   display:block;
 }
 
-/* beide Texte normal im Flow */
-.thai-switch .latin,
-.thai-switch .thai{
+/* Chanyanut bleibt im Layout und hält den Platz */
+.thai-switch .latin{
   display:block;
   line-height:1.05;
 }
 
-/* Thai leicht kleiner machen (passt besser in den Space) */
+/* Thai liegt exakt über Chanyanut */
 .thai-switch .thai{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+
+  display:block;
+  white-space:nowrap;
+
   font-family:"Athiti", sans-serif;
   font-weight:700;
+  font-size:0.7em; /* 30% kleiner */
 
-  font-size:0.9em; /* 🔑 verhindert „zu groß / klebt“ */
-
-  opacity:0;
-  height:0;
-  overflow:hidden;
-
-  transition:opacity 0.2s ease;
-}
-
-/* Hover Verhalten */
-.homewordmark:hover .latin{
-  opacity:0;
-  height:0;
-  overflow:hidden;
-}
-
-.homewordmark:hover .thai{
-  opacity:1;
-  height:auto;
-}
-.thai-switch .thai{
-  transform:translateY(-0.05em);
-}
-/* --- Portfolio Hover Zusatzinfo (FIXED) --- */
-
-.work-title{
-  position:relative;
-  display:block; /* WICHTIG: kein flex mehr */
-}
-
-/* Hover Text */
-.work-meta{
-  position:absolute;
-  left:0;
-  top:100%;
-  margin-top:4px;
-
-  font-family:var(--font-body);
-  font-size:var(--fs-body);
-  font-weight:400;
+  line-height:1;
   letter-spacing:0;
-  text-transform:none;
 
   opacity:0;
   pointer-events:none;
-  transition:opacity 0.25s ease;
 }
 
-/* Hover Effekt */
-@media (hover:hover){
-  .work-card:hover .work-meta,
-  .work-card:focus .work-meta{
+/* Hover nur auf Desktop / Geräten mit echtem Hover */
+@media (hover:hover) and (pointer:fine){
+  .homewordmark:hover .thai-switch .latin{
+    visibility:hidden;
+  }
+
+  .homewordmark:hover .thai-switch .thai{
     opacity:1;
+  }
+}
+
+/* Auf Mobile kein Hover-Effekt */
+@media (hover:none), (pointer:coarse){
+  .thai-switch .latin{
+    visibility:visible;
+  }
+
+  .thai-switch .thai{
+    display:none;
   }
 }
