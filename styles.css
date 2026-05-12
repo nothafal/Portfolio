@@ -682,24 +682,3 @@ h1.name-outline{
   }
 }
 
-/* Hover nur auf Desktop / Geräten mit echtem Hover */
-@media (hover:hover) and (pointer:fine){
-  .homewordmark:hover .thai-switch .latin{
-    visibility:hidden;
-  }
-
-  .homewordmark:hover .thai-switch .thai{
-    opacity:1;
-  }
-}
-
-/* Auf Mobile kein Hover-Effekt */
-@media (hover:none), (pointer:coarse){
-  .thai-switch .latin{
-    visibility:visible;
-  }
-
-  .thai-switch .thai{
-    display:none;
-  }
-
