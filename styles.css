@@ -628,9 +628,8 @@ h1.name-outline{
 
 .thai-switch{
   position:relative;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display:block;
+  width:100%;
 }
 
 /* Chanyanut bleibt im Layout und hält den Platz */
@@ -639,7 +638,7 @@ h1.name-outline{
   line-height:1.05;
 }
 
-/* Thai liegt exakt über Chanyanut */
+/* Thai liegt mittig über der gesamten Wortmarke */
 .thai-switch .thai{
   position:absolute;
   left:50%;
@@ -647,17 +646,40 @@ h1.name-outline{
   transform:translate(-50%, -50%);
 
   display:block;
+  width:max-content;
   white-space:nowrap;
 
   font-family:"Athiti", sans-serif;
   font-weight:700;
-  font-size:0.7em; /* 30% kleiner */
+  font-size:0.7em;
 
   line-height:1;
   letter-spacing:0;
 
   opacity:0;
   pointer-events:none;
+}
+
+/* Hover nur auf Desktop */
+@media (hover:hover) and (pointer:fine){
+  .homewordmark:hover .thai-switch .latin{
+    visibility:hidden;
+  }
+
+  .homewordmark:hover .thai-switch .thai{
+    opacity:1;
+  }
+}
+
+/* Auf Mobile kein Hover-Effekt */
+@media (hover:none), (pointer:coarse){
+  .thai-switch .latin{
+    visibility:visible;
+  }
+
+  .thai-switch .thai{
+    display:none;
+  }
 }
 
 /* Hover nur auf Desktop / Geräten mit echtem Hover */
@@ -680,8 +702,4 @@ h1.name-outline{
   .thai-switch .thai{
     display:none;
   }
-  .homewordmark{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
+
