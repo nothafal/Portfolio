@@ -628,7 +628,9 @@ h1.name-outline{
 
 .thai-switch{
   position:relative;
-  display:block;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 /* Chanyanut bleibt im Layout und hält den Platz */
@@ -678,4 +680,8 @@ h1.name-outline{
   .thai-switch .thai{
     display:none;
   }
+  .homewordmark{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
