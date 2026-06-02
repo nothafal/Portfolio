@@ -735,3 +735,21 @@ h1.name-outline{
     visibility:visible;
   }
 }
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 2rem; /* Abstand unter Transformation Design */
+  font-size: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.hero-cta .arrow {
+  transition: transform 0.2s ease;
+}
+
+.hero-cta:hover .arrow {
+  transform: translateX(5px);
+}
